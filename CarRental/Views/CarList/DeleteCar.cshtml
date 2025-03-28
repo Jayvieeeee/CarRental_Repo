@@ -1,0 +1,35 @@
+﻿@model CarRental.Models.Entites.Car
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "Delete Car";
+}
+
+<link href="~/css/admin/EditCars.css" rel="stylesheet" />
+
+<h2 class="text-center">Delete Car</h2>
+
+<div class="container">
+    <div class="edit-card">
+        <div class="edit-card-body">
+            <p class="text-center">Are you sure you want to delete this car?</p>
+
+            <ul class="car-details">
+                <li><strong>Brand:</strong> @Model.Brand</li>
+                <li><strong>Model:</strong> @Model.Model</li>
+                <li><strong>Seaters:</strong> @Model.Seaters</li>
+                <li><strong>Rental Price:</strong> ₱@Model.RentalPrice</li>
+                <li><strong>Status:</strong> @Model.Status</li>
+            </ul>
+
+            <form method="post" action="@Url.Action("DeleteCarConfirmed", "CarList", new { area = "Admin" })">
+                <input type="hidden" name="id" value="@Model.CarId" />
+                
+                <div class="button-group">
+                    <button type="submit" class="btn-save">✔ Yes, Delete</button>
+                    <a href="@Url.Action("CarList", "CarList")" class="btn-cancel">✖ Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

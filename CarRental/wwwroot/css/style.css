@@ -1,0 +1,961 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    padding-top: 1px; 
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: white; /* Ensure navbar stays visible */
+    top: 0;
+    left: 0;
+    height: 80px; /* Define navbar height */
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img {
+    width: 100%;
+}
+
+.section-content {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 100%;
+}
+
+.section-title {
+    text-align: center;
+    padding: 60px 0 100px;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.section-title::after {
+        content: "";
+        width: 80px;
+        height: 5px;
+        display: block;
+        margin: 10px auto 0;
+        border-radius: 20px;
+        background: #D2042D;
+    }
+
+/* Navbar Styling */
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center; /* Ensures logo aligns with menu */
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Adjust spacing */
+}
+
+header .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between logo and menu */
+    padding: 10px 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #242a2b;
+}
+
+.navbar .nav-logo {
+    flex: 1; /* Pushes content to the center */
+    margin-left: 30px;
+}
+
+.navbar .nav-logo img {
+        width: 130px; /* Adjust this value as needed */
+        height: auto; /* Maintain aspect ratio */
+        margin-left: 10px; /* Adjust spacing */
+        margin-top: 5px;
+    }
+
+.navbar .nav-menu {
+    display: flex;
+    flex-grow: 1; /* Allow it to take up space */
+    justify-content: center; /* Center the nav items */
+    gap: 20px;
+}
+
+.navbar .nav-menu .nav-link {
+        padding: 10px 20px;
+        font-size: 19px;
+        color: #fff;
+        border-radius: 20px;
+        transition: 0.3s ease;
+        text-decoration: none;
+    }
+.navbar .nav-menu .nav-link.active {
+            color: #000;
+        }
+.navbar .nav-menu .nav-link:hover {
+            color: #000;
+        }
+.nav-link {
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.nav-link.active {
+        background-color: #d3d3d3;
+        color: #000;
+    }
+.line img {
+    width: 130px; 
+    height: auto;
+    margin-left: 0px; 
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.navbar :where(#menu-close-button, #menu-open-button) {
+    display: none;
+}
+
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 50px;
+    background-image: url('/images/landpage.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hero-section .section-content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        padding: 50px; 
+    }
+
+.hero-section .hero-details {
+        max-width: 50%; 
+        text-align: left; 
+        margin-left: 50px;
+    }
+
+.hero-section .title {
+        font-size: 45px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+.hero-section .subtitle {
+        font-size: 60px;
+        font-weight: bold;
+        color: #85874c;
+    }
+
+.hero-section .description {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #E0E0E0;
+        max-width: 90%;
+    }
+
+.hero-section .buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+.button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s ease;
+    margin-top: 50px;
+}
+
+    .button.rent {
+        background-color: #85874c;
+        color: black;
+        border: 2px solid transparent;
+    }
+
+.button.rent:hover {
+            background-color: #8C8C5A;
+        }
+
+.button.see-more {
+        background: transparent;
+        border: 2px solid #fff;
+        color: white;
+        font-weight: 400;
+    }
+
+.button.see-more:hover {
+            background: #fff;
+            color: black;
+        }
+
+/* ABOUT US SECTION */
+.about-section {
+    position: relative;
+    background-image: url(../images/aboutus.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: 150px;
+}
+
+.about-section .section-content {
+        background-color: #242a2b;
+    }
+
+/* About Text */
+.about-text {
+    max-width: 100%;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.about-text h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #85874c;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+.about-text p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-top: 15px;
+        padding: 0 10%;
+        color: #ccc;
+    }
+
+.about-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    max-width: 250px;
+    text-align: center;
+}
+
+.feature i {
+        font-size: 2.5rem;
+        color: #85874c;
+    }
+
+.feature h3 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+        color: #fff;
+    }
+
+.feature p {
+        font-size: 1rem;
+        color: #ccc;
+        margin-top: 5px;
+    }
+
+/* SUPPORT SECTION */
+.contact-section {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.support-container {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 70px;
+    background-color: #fff;
+    padding: 20px 30px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .support-container h2 {
+        font-size: 1.8rem; 
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+/* FAQ Styles */
+.faq-section {
+    text-align: left;   
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.faq-question {
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0; /* Reduced space between questions */
+}
+
+/* FAQ Icon - Smaller and Adjusted */
+.faq-icon {
+    font-size: 0.9rem;
+    margin-left: 8px;
+    color: #85874c;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Rotate Icon when Open */
+.faq-item.open .faq-icon {
+    transform: rotate(180deg);
+    color: #ccc;
+}
+
+/* FAQ Answer - Hide by Default */
+.faq-answer {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #666;
+    display: none; /* Hide answers initially */
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item + .faq-item {
+    margin-top: 8px;
+}
+
+.contact-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+.contact-section .section-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+/* Support Section Styling */
+.support-section {
+    padding: 50px 5%;
+    background-color: #fff;
+}
+
+/* Container for Info and Form */
+.support-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Support Info Section */
+.support-info {
+    width: 45%;
+    text-align: left;
+}
+
+/* Heading Styling */
+.support-title {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+    .support-info h3 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+/* Paragraph Styling */
+.support-info p {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Support Icons */
+.support-icon {
+    font-size: 1.2rem;
+    color: #85874c;
+    margin-right: 10px;
+}
+
+/* Support Form Section */
+.support-form {
+    width: 40%;
+    background-color: #f0f0f0;
+    padding: 30px 40px;
+    margin-right: 20px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Form Labels */
+.support-form label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Input and Textarea Styling */
+.support-form input,
+.support-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+/* Textarea Height */
+.support-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Submit Button */
+.support-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #85874c;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+    /* Button Hover */
+    .support-btn:hover {
+        background-color: #6b6d3e;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .support-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .support-info,
+    .support-form {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+@media (min-width: 768px) {
+    .left-section {
+        width: 55%;
+        border-right: 150px solid #fff;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+body.show-mobile-menu header::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        backdrop-filter: blur(5px);
+        background: rgba(0,0,0, 0.2);
+    }
+
+.navbar :where(#menu-close-button, #menu-open-button) {
+        font-size: 20px;
+        display: block;
+    }
+
+.navbar .nav-menu {
+        display: block;
+        position: fixed;
+        left: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        background: #D2042D;
+        transition: left 0.2s ease;
+    }
+
+body.show-mobile-menu .navbar .nav-menu {
+        left: 0;
+    }
+
+.navbar #menu-close-button {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        color: #fff;
+    }
+
+ .navbar #menu-open-button {
+        color: #D2042D;
+    }
+
+.navbar .nav-menu .nav-link {
+        color: #fff;
+        font-size: 20px;
+        display: block;
+        margin-top: 10px;
+    }
+
+.navbar .nav-menu .nav-link:hover {
+            color: #fff;
+            background: #000;
+            border-radius: 50px;
+        }
+
+ .navbar .line img {
+        display: none;
+    }
+
+
+ .hero-section .section-content {
+        gap: 50px;
+        text-align: center;
+        padding: 30px 20px 20px;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+ .hero-section .hero-details :is(.subtitle, .description) {
+        max-width: 100%;
+    }
+
+ .hero-section .hero-details .buttons {
+        justify-content: center;
+    }
+.hero-section .hero-image {
+        max-width: 270px;
+        margin-right: 0;
+    }
+
+.about-section .section-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+.about-text {
+        max-width: 80%;
+    }
+
+
+.contact-section .section-content {
+        flex-direction: column;
+        align-items: center;
+        max-width: 90%;
+        text-align: center;
+    }
+
+.contact-info, .contact-form {
+        width: 100%;
+        text-align: center;
+    }
+
+.contact-form form {
+            align-items: center;
+        }
+}
+
+/* VIEW CARS */
+.view-cars-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('/images/viewcars.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 0;
+    margin-top: 50px;
+}
+
+/* View Cars Section Title */
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    color: #85874c; /* Updated to match the image */
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+    /* Underline under VIEW CARS */
+    .section-title::after {
+        content: "";
+        width: 80px;
+        height: 3px;
+        background-color: #85874c;
+        display: block;
+        margin: 8px auto 0;
+    }
+
+/* Car Info Box - Positioned at Upper Left */
+.car-info-box {
+    position: absolute;
+    top: 22%;
+    left: 10%;
+    background: white;
+    padding: 20px 25px;
+    width: 340px;
+    min-height: 150px;
+    font-family: 'Poppins', sans-serif;
+    z-index: 10;
+    border-radius: 0 50px 50px 0; /* Curved shape on the right */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* Car Title */
+.car-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Car Details */
+.car-details,
+.car-rate {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #666;
+}
+
+    .car-rate strong {
+        font-weight: 700;
+        color: #000;
+    }
+
+/* Car Container */
+.car-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+    min-height: 480px;
+}
+
+/* Styling for the cars inside the slider */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Side preview cars should be slightly faded and smaller */
+.swiper-slide-prev,
+.swiper-slide-next {
+    opacity: 0.5;
+    transform: scale(0.8);
+}
+
+/* Active car is larger and fully visible */
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Ensure car images are consistent in size */
+.car-image img {
+    max-width: 600px; /* Increased car size */
+    height: auto;
+    transform: translateY(-10px); /* Slight lift for center car */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Highlighted Center Car */
+.swiper-slide-active .car-image img {
+    transform: translateY(-20px) scale(1.15); /* Slightly bigger center car */
+}
+
+/* Rotate Previous Car Slightly to Left */
+.swiper-slide-prev .car-image img {
+    transform: translateY(-10px) rotateY(15deg) scale(0.9);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Rotate Next Car Slightly to Right */
+.swiper-slide-next .car-image img {
+    transform: translateY(-10px) rotateY(-15deg) scale(0.9);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Interested Button */
+.interested-btn {
+    padding: 12px 28px;
+    background-color: #85874c;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    /* Button Hover Effect */
+    .interested-btn:hover {
+        background-color: #6c7050;
+    }
+
+/* Interested Button Container */
+.interested-btn-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+}
+
+/* Show button only for the active slide */
+.swiper-slide-active .interested-btn-container {
+    visibility: visible;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 24px;
+    width: auto;
+    height: auto;
+}
+
+    /* Optional: Add hover effect */
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        color: #85874c;
+    }
+
+/* Move arrows closer to the cars */
+.swiper-button-prev {
+    left: 2%;
+}
+
+.swiper-button-next {
+    right: 2%;
+}
+
+
+
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .car-info-box {
+        position: relative;
+        width: 90%;
+        left: 5%;
+        top: 20px;
+    }
+
+    .swiper-slide img {
+        max-width: 300px;
+    }
+
+    .interested-btn {
+        padding: 10px 24px;
+    }
+}
+
+
+
+
+
+
+
+/* Responsive Fix */
+@media (max-width: 1024px) {
+    .swiper-slide {
+        width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .swiper-slide {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-slide {
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+@media (min-width: 768px) {
+    .left-section {
+        width: 55%;
+        border-right: 150px solid #fff;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .navbar .nav-menu {
+        display: block;
+        position: fixed;
+        left: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        background: #D2042D;
+        transition: left 0.2s ease;
+    }
+
+    body.show-mobile-menu .navbar .nav-menu {
+        left: 0;
+    }
+}
+
+
+footer {
+    background-color: #242a2b !important;
+    color: #ffffff !important;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+footer {
+    background-color: #242a2b !important;
+    color: #ffffff !important;
+    padding: 20px 50px;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto; 
+    width: 100%;
+}
+
+
+.footer-bottom-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.footer-bottom {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+
+.footer-bottom-DM {
+    font-size: 18px;
+    opacity: 0.8;
+    text-align: right;
+}
+
+

@@ -1,0 +1,266 @@
+﻿        @{
+            Layout = "~/Views/Shared/GuestLayout.cshtml";
+            ViewData["Title"] = "Home Page";
+        }
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Car Rental</title>
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+            <link rel="stylesheet" href="~/css/style.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        </head>
+        <body>        
+
+            <main>
+                <!--HERO SECTION-->
+                <section class="hero-section" id="home">
+                    <div class="section-content">
+                        <div class="hero-details">
+                            <h2 class="title">RENT & GO!</h2>
+                            <h3 class="subtitle">DM ONLINE CAR RENTAL</h3>
+                            <p class="description">
+                                Your Ride, Your Way – RENT Now!
+                                Your go-to car rental service for every journey!
+                                From daily drives to special trips, we offer a wide
+                                range of reliable and affordable vehicles. Book with ease today!
+                            </p>
+                            <div class="buttons">
+                        <a asp-controller="Account" asp-action="Login" class="button rent">RENT</a>
+
+                                <a href="#about" class="button see-more">SEE MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ABOUT US -->
+                <section class="about-section" id="about">
+                    <div class="section-content">
+               
+                        <div class="about-text">
+                            <h2>ABOUT US</h2>
+                            <p>
+                                Welcome to <strong>DM Car Online Rental</strong>, your trusted partner for hassle-free and reliable car rentals. Whether you're traveling for business, leisure, or just need a ride for the day, we are committed to providing you with top-quality vehicles at affordable rates.
+                            </p>
+                            <p>
+                                <strong>Who We Are:</strong> DM Cars is dedicated to offering a seamless and enjoyable car rental experience. With a fleet of well-maintained vehicles ranging from compact cars to spacious SUVs, we ensure that you find the perfect ride for your needs. Our team is passionate about customer satisfaction and always ready to assist you.
+                            </p>
+                        </div>
+
+               
+                        <div class="about-features">
+                            <div class="feature">
+                                <i class="fas fa-hand-holding-usd"></i>
+                                <h3>Affordable Rates</h3>
+                                <p>Get competitive pricing without hidden fees.</p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-car"></i>
+                                <h3>Variety of Vehicles</h3>
+                                <p>Choose from a diverse selection of cars to suit your preference.</p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle"></i>
+                                <h3>Easy Booking Process</h3>
+                                <p>Rent a car in just a few simple steps.</p>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Reliable Service</h3>
+                                <p>Well-maintained vehicles to ensure your safety and comfort.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--VIEW CARS-->
+                <section class="view-cars-wrapper" id="viewCars">
+                    <div class="section-content">
+                        <!-- View Cars Title -->
+                        <h2 class="section-title">VIEW CARS</h2>
+
+                        <!-- Car Info Box Positioned Below the Title -->
+                        <div class="car-info-box" id="carInfoBox">
+                            <h3 id="car-brand-model" class="car-title">Nissan Livina</h3>
+                            <p id="car-seaters" class="car-details">Capacity: 6-7 Seater</p>
+                            <p id="car-price" class="car-rate">Rate per day: <strong>₱3,500</strong></p>
+                        </div>
+
+                        <!-- Swiper Slider -->
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                @foreach (var car in Model)
+                                {
+                                    <div class="swiper-slide" data-brand="@car.Brand" data-model="@car.Model"
+                                         data-seaters="@car.Seaters" data-price="@car.RentalPrice">
+                                        <div class="car-container">
+                                            <div class="car-image">
+                                                <img src="~/images/carlist/@car.ImageUrl" alt="@car.Model">
+                                            </div>
+                                            <div class="interested-btn-container">
+                                                <button class="interested-btn" onclick="window.location='/Guest/Account/Login'">
+                                                    Interested
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- Swiper Navigation Buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </section>
+
+
+        <!-- SUPPORT SECTION -->
+        <section class="contact-section" id="support">
+            <div class="support-container">
+                <h2>How can we help you?</h2>
+
+                <!-- FAQ List -->
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            What are the requirements to rent a car? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            You need a valid driver’s license, at least one government-issued ID, and a security deposit.
+                            Foreign visitors must present a passport and an international driver’s permit.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            How do I book a rental car? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            You need to login on our website and book online through our website or contact us via call. Once logged in,
+                            simply select your preferred car, rental duration, and driver’s license number.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            What payment methods do you accept? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            All payments and security deposits are made physically upon pickup to ensure transparency and security.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            Is there a security deposit? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            Yes, a refundable security deposit is required. The amount varies depending on the vehicle type and rental
+                            duration. It will be refunded after the car is returned in good condition.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            Can I extend my rental period? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            Yes, but only if the vehicle is not booked by another customer on your requested dates. Please inform us as
+                            early as possible to check availability. Additional rental fees will apply.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            What should I do in case of an accident or breakdown? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            Contact our support team immediately for assistance and further instructions.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            What is your cancellation policy? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            Cancellations must be made 24 hours prior to the pickup date to avoid any charges. Late cancellations may
+                            incur a cancellation fee.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 class="faq-question" onclick="toggleFAQ(this)">
+                            How do I return the car? <i class="fas fa-chevron-down faq-icon"></i>
+                        </h4>
+                        <p class="faq-answer">
+                            Return the car to the designated drop-off location or as agreed upon during booking. Ensure the vehicle is in
+                            the same condition to avoid additional fees.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUPPORT SECTION -->
+        <section class="support-section" id="support">
+            <div class="support-content">
+                <!-- Contact Info Section -->
+                <div class="support-info">
+                    <h2 class="support-title">Did not see what you're looking for?</h2>
+                    <h3>Contact us for inquiries or assistance!<br></h3>
+                    <p><i class="fas fa-map-marker-alt support-icon"></i> Biglang Awa, Caloocan City</p>
+                    <p><i class="fas fa-phone-alt support-icon"></i> Phone: 09061402847</p>
+                    <p><i class="fas fa-envelope support-icon"></i> Email: dmcars@gmail.com</p>
+                    <p><i class="fas fa-globe support-icon"></i> Website: dmcars.com</p>
+                    <p><br>We look forward to serving you!</p>
+                </div>
+
+                <!-- Contact Form Section -->
+                <div class="support-form">
+                    <form asp-controller="Inquiries" asp-action="SubmitInquiry" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="Name" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="Email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="PhoneNumber" placeholder="Enter your phone number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="Message" placeholder="Write your message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="support-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+            </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="~/js/script.js"></script>
+
+        </body>
+        </html>
+
+
+

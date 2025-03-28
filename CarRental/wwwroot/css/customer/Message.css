@@ -1,0 +1,133 @@
+﻿/* Centered Main Container */
+.inquiry-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 4 0px auto;
+    padding: 20px;
+    background: #ebfbfa;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Chat Box */
+.inquiry-chat {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.chat-header {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 10px;
+}
+
+    .chat-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+.messages {
+    flex-grow: 1;
+    height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat Bubbles */
+.message {
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 75%;
+    margin-bottom: 8px;
+    font-size: 14px;
+    position: relative;
+}
+
+.sent {
+    background: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.received {
+    background: #f0f0f0;
+    color: black;
+    align-self: flex-start;
+}
+
+.message time {
+    display: block;
+    font-size: 10px;
+    color: gray;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+    .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .chat-input button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .inquiry-container {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100%;
+    }
+
+
+    .inquiry-chat {
+        width: 100%;
+    }
+
+    .messages {
+        height: 350px;
+    }
+}

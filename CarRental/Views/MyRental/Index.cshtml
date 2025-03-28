@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+    <link rel="stylesheet" href="~/css/customer/my_rental_history.css" />
+
+<main class="main-content">
+    <header class="header">
+        <h1>Rental History</h1>
+    </header>
+
+    <!-- Pending Rentals Section -->
+    <section class="rental-container-pending-rentals">
+        <h2>Pending Rentals</h2>
+        <div class="rental-card">
+            <img src="/images/carlist/almera.jpg" alt="Almera">
+            <div class="pending-rental-info">
+                <h6>Almera</h6>
+                <p><strong>Rental Date:</strong> March 10, 2025</p>
+                <p><strong>Return Date:</strong> March 15, 2025</p>
+                <p><strong>Status:</strong> <span class="status pending">Pending</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Completed Rentals Section (Swiper) -->
+    <section class="rental-container-completed-rentals">
+        <h2>Completed Rentals</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Sample Cars (Will be replaced by dynamic data) -->
+                <div class="swiper-slide">
+                    <div class="car-card">
+                        <img src="/images/carlist/toyota.jpg" alt="Toyota Vios">
+                        <div class="car-card-details">
+                            <h3>Toyota</h3>
+                            <p>Model: Vios</p>
+                            <p>Seats: 5</p>
+                            <p>₱2000.00 Per Day</p>
+                            <button class="btn">Interested</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="car-card">
+                        <img src="/images/carlist/honda.jpg" alt="Honda City">
+                        <div class="car-card-details">
+                            <h3>Honda</h3>
+                            <p>Model: City</p>
+                            <p>Seats: 5</p>
+                            <p>₱2200.00 Per Day</p>
+                            <button class="btn">Interested</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="car-card">
+                        <img src="/images/carlist/mirage.jpg" alt="Mitsubishi Mirage G4">
+                        <div class="car-card-details">
+                            <h3>Mitsubishi</h3>
+                            <p>Model: Mirage G4</p>
+                            <p>Seats: 5</p>
+                            <p>₱2000.00 Per Day</p>
+                            <button class="btn">Interested</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Swiper Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Cancelled Rentals Section -->
+    <section class="rental-container-cancelled-rentals">
+        <h2>Cancelled Rentals</h2>
+        <div class="rental-card">
+            <img src="/images/carlist/vios.jpg" alt="Toyota Vios">
+            <div class="cancel-rental-info">
+                <h6>Toyota Vios</h6>
+                <p><strong>Rental Date:</strong> March 1, 2025</p>
+                <p><strong>Return Date:</strong> March 4, 2025</p>
+                <p><strong>Status:</strong> <span class="status cancelled">Cancelled</span></p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Include Swiper.js -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        loop: true,
+        autoplay: false // Disabled auto-swiping
+    });
+</script>

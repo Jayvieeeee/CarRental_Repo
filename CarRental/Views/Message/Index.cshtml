@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+    ViewData["Title"] = "Message";
+}
+
+<link href="~/css/customer/Message.css" rel="stylesheet" />
+
+<div class="inquiry-container">
+
+    <!-- Chat Box -->
+    <div class="inquiry-chat">
+        <div class="chat-header"></div>
+        <div class="messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/inquiries.js"></script>

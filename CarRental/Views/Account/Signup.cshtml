@@ -1,0 +1,89 @@
+﻿@model CarRental.Models.ViewModels.SignupViewModel
+
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Sign Up";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="~/css/signup.css" />
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="nav-logo">
+                <img src="~/images/UserIcons/dmWhiteLogo.png" alt="DM Car Rental Logo">
+            </a>
+            <button id="menu-close-button" class="fas fa-times"></button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a asp-controller="/Home" asp-action="Index" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/Home/Index#about" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="/Home/Index#viewCars" class="nav-link">Cars</a></li>
+                <li class="nav-item"><a href="/Home/Index#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a asp-controller="Account" asp-action="Login" class="nav-link">Login</a></li>
+
+                <div class="line">
+                    <img src="~/images/UserIcons/line_final.png" alt="Line Image">
+                </div>
+            </ul>
+            <button id="menu-open-button" class="fas fa-bars"></button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Left Section for Signup Form -->
+        <div class="left-section">
+            <div class="signup-box">
+                <h2>Create An Account</h2>
+                <p>Sign Up For Free. No membership fee.</p>
+
+                <form asp-action="Signup" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- First Name and Last Name -->
+                    <input asp-for="FirstName" placeholder="First Name" required>
+                    <input asp-for="LastName" placeholder="Last Name" required>
+
+                    <!-- Email and Username -->
+                    <input asp-for="Email" placeholder="Email" required>
+                    <input asp-for="Username" placeholder="Username" required>
+
+                    <!-- Password and Confirm Password -->
+                    <input asp-for="Password" type="password" placeholder="Password" required>
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" required>
+
+                    <!-- Submit Button -->
+                    <button type="submit">Sign Up</button>
+                </form>
+
+                <!-- Already registered link -->
+                <p class="signup-text">
+                    Already have an account? <a asp-controller="Account" asp-action="Login">Login here</a>
+                </p>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <p class="text-danger">Invalid input. Please check your details and try again.</p>
+                }
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="~/js/script.js"></script>
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }
+</body>
+</html>

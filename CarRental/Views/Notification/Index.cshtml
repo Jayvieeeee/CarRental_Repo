@@ -1,0 +1,69 @@
+﻿@model List<CarRental.Models.Entites.Notification>
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "Notification";
+}
+
+<link rel="stylesheet" href="~/css/admin/Notification.css" />
+
+<!-- Notification Section -->
+<div class="notification-wrapper">
+    <h2 class="notification-title">NOTIFICATIONS</h2>
+    <div id="notification-container">
+        @foreach (var notification in Model)
+        {
+            <div class="notification-card" onclick="toggleMessage(this)">
+                <div class="notification-header">
+                    <span class="badge badge-@notification.Type.ToLower()">@notification.Type</span>
+                    <span class="notification-time">@notification.CreatedAt.ToString("dd MMM yyyy hh:mm tt")</span>
+                </div>
+                <div class="notification-body">
+                    <h4 class="notification-title-text"><span>📩</span> @notification.Title</h4>
+                    <p class="notification-message hidden">@notification.Message</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- SignalR Client-Side Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    // Connect to SignalR Hub
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/notificationHub")
+        .build();
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    // Function to toggle the visibility of messages
+    function toggleMessage(card) {
+        var message = card.querySelector('.notification-message');
+        message.classList.toggle('hidden');
+    }
+
+    // Function to add new notification dynamically
+    connection.on("ReceiveNotification", function (notification) {
+        var container = document.getElementById("notification-container");
+
+        var newNotification = document.createElement("div");
+        newNotification.className = "notification-card";
+        newNotification.onclick = function () { toggleMessage(this); };
+
+        newNotification.innerHTML = `
+            <div class="notification-header">
+                <span class="badge badge-${notification.type.toLowerCase()}">${notification.type}</span>
+                <span class="notification-time">${new Date(notification.createdAt).toLocaleString()}</span>
+            </div>
+            <div class="notification-body">
+                <h4 class="notification-title-text"><span>📩</span> ${notification.title}</h4>
+                <p class="notification-message hidden">${notification.message}</p>
+            </div>
+        `;
+
+        container.prepend(newNotification);
+    });
+</script>

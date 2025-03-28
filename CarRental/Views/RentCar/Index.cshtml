@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+<link rel="stylesheet" href="~/css/customer/rent.css" />
+
+<header>
+    <div class="image-header"></div>
+    <div class="search-container">
+        <div class="select-group">
+            <label for="selectBrand">Select Brand</label>
+            <select name="brand" id="selectBrand">
+                <option value="">Choose</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Toyota">Toyota</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="selectModel">Select Model</label>
+            <select name="model" id="selectModel">
+                <option value="">Choose</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="selectCapacity">Capacity</label>
+            <select name="capacity" id="selectCapacity">
+                <option value="">Choose</option>
+                <option value="5">5 Seats</option>
+                <option value="7">7 Seats</option>
+                <option value="12">12 Seats</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="selectPrice">Price</label>
+            <select name="price" id="selectPrice">
+                <option value="">Choose</option>
+                <option value="2500">₱2500/day</option>
+                <option value="3500">₱3500/day</option>
+                <option value="4500">₱4500/day</option>
+            </select>
+        </div>
+
+        <button type="button" class="search-btn">
+            <i class="fas fa-search"></i> Search
+        </button>
+    </div>
+</header>
+
+
+<div class="car-list">
+    @foreach (var car in Model)
+    {
+        <div class="car-card">
+            <div class="car-header">
+                <h2>@car.Brand @car.Model</h2>
+                <span class="rent-badge">Rent</span>
+            </div>
+            <div class="car-image-container">
+                <img src="~/images/carlist/@car.ImageUrl" alt="@car.Model" class="car-image">
+            </div>
+            <div class="car-price">
+                <span class="price">₱@car.RentalPrice per day</span>
+                <a href="#" class="details-link">Details</a>
+            </div>
+            <div class="car-features">
+                <span><i class="fas fa-users"></i> @car.Seaters</span>
+                <span><i class="fas fa-briefcase"></i> 2</span>
+                <span><i class="fas fa-cogs"></i> Automatic</span>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+<script src="~/js/customer/rent.js"></script>
+
+

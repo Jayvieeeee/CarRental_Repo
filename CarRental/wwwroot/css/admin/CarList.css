@@ -1,0 +1,319 @@
+﻿* {
+    font-family: Arial, sans-serif;
+}
+
+
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 100px
+ }
+
+.table-container {
+    width: 100%;
+    max-width: 1000px;
+    background: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+}
+
+.table-header {
+    display: flex;
+    align-items: flex-end; /* Ensures button stays lower */
+    justify-content: center; /* Centers h2 */
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    position: relative;
+}
+
+    .table-header h2 {
+        margin-bottom: 10px; /* Moves h2 higher */
+        font-size: 40px;
+    }
+
+    .table-header .btn-primary {
+        position: absolute;
+        left: 0; /* Keeps button on the left */
+       margin-top: 100px;
+        transform: translateY(-50%); /* Centers vertically */
+    }
+
+    /* Table Header Styling */
+.styled-table thead {
+    background-color: #D2042D;
+    color: white;
+}
+
+    /* Available Status Styling */
+    .badge-success {
+        background-color: green;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Table Styles */
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+    }
+
+        /* Table Headers & Cells */
+        .styled-table th, .styled-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+    /* Car Image */
+.car-image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0; /* Removes rounded corners */
+    border: none; /* Removes border */
+}
+
+    /* Status Badges */
+    .badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: green;
+        color: white;
+        border: none;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: #333;
+        border: none;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    /* Inline Forms */
+    .inline-form {
+        display: inline;
+    }
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* Button styles */
+.btn-save,
+.btn-cancel {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    width: 40%;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #333;
+        text-decoration: none;
+    }
+
+/* Modal Header */
+.modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Save and Cancel Buttons */
+.btn-save,
+.btn-cancel {
+    padding: 12px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Save Button */
+.btn-save {
+    background-color: #6f42c1;
+    color: white;
+}
+
+    .btn-save:hover {
+        background-color: #5a3796;
+    }
+
+/* Cancel Button */
+.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .btn-cancel:hover {
+        background-color: #c82333;
+    }
+
+/* Remove Button */
+.btn-remove {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    .btn-remove:hover {
+        background-color: #e9ecef;
+        color: #333;
+    }
+
+    /* Icon for Remove Button */
+    .btn-remove i {
+        margin-right: 5px;
+        font-size: 16px;
+    }
+

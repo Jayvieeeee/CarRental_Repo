@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<link href="~/css/customer/profile.css" rel="stylesheet" />
+
+<!--PROFILE-->
+<div class="container">
+    <!--PROFILE SETTINGS SIDEBAR-->
+    <aside class="account-sidebar">
+        <h2 class="sidebar-header">Account Settings</h2>
+        <ul>
+            <li><a href="#profile-settings"><i class="icon">👤</i> Profile Settings</a></li>
+            <li><a href="#password-settings"><i class="icon">🔒</i> Password</a></li>
+            <li><a href="/RentalHistory"><i class="icon">⏳</i> Rental History</a></li>
+        </ul>
+    </aside>
+
+
+    <!-- PROFILE SETTINGS SECTION -->
+    <section id="profile-settings" class="profile-settings">
+        <form method="post" class="profile-form">
+            <div class="form-group">
+                <label for="FirstName">First Name<span class="text-danger">*</span></label>
+                <input type="text" id="FirstName" name="FirstName" class="form-control" placeholder="First name" required />
+            </div>
+            <div class="form-group">
+                <label for="LastName">Last Name<span class="text-danger">*</span></label>
+                <input type="text" id="LastName" name="LastName" class="form-control" placeholder="Last name" required />
+            </div>
+            <div class="form-group">
+                <label for="Email">Email<span class="text-danger">*</span></label>
+                <input type="email" id="Email" name="Email" class="form-control" placeholder="example@example.com" required />
+            </div>
+            <div class="form-group">
+                <label for="ContactNumber">Contact Number<span class="text-danger">*</span></label>
+                <input type="text" id="ContactNumber" name="ContactNumber" class="form-control" placeholder="xxxx-xxx-xxxx" required />
+            </div>
+            <div class="form-group">
+                <label for="LicenseNumber">License Number<span class="text-danger">*</span></label>
+                <input type="text" id="LicenseNumber" name="LicenseNumber" class="form-control" placeholder="xxxx-xx-xxxxxx" required />
+            </div>
+
+            <!-- Save Button -->
+            <div class="button-container">
+                <button type="submit" class="save-btn">Save Changes</button>
+            </div>
+        </form>
+    </section>
+
+

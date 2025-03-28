@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Code</title>
+    <link href="~/css/verifyCode.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div id="verifyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 class="modal-title">Verify Code</h2>
+            <p>
+                Please enter the verification code sent to your email address.<br>
+                You may check the spam section of your email.
+            </p>
+
+            <p class="text-danger error-message" style="display: none;"></p>
+
+            <form id="verifyCodeForm" method="post" asp-controller="Account" asp-action="VerifyCode">
+                <input type="hidden" name="Email" value="@TempData["Email"]" />
+                <div class="form-group">
+                    <input type="text" id="code" name="Code" class="form-control" placeholder="Enter Verification Code" required />
+                </div>
+
+                <p>Didn't get the code? <a href="#" id="resendCode">Resend code</a> <span id="resendTimer" style="color: red;"></span></p>
+
+                <button type="submit" id="submit" class="btn-primary">Verify</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include External JavaScript -->
+    <script src="~/js/guest/verifycode.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #f8f9fa;
+    padding-top: 10px; /* Adjusted for spacing */
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px; /* Reduce space between h2 and form */
+}
+
+.edit-card {
+    width: 500px; /* Increased width */
+    padding: 20px; /* Increased padding */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    text-align: center;
+}
+
+.car-details {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+    .car-details li {
+        font-size: 16px;
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-input, .form-select {
+    width: 80%; /* Ensures full width inside form */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-save {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-save:hover {
+    background-color: #c82333;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}

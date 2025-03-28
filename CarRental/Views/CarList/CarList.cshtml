@@ -1,0 +1,208 @@
+﻿@model List<CarRental.Models.Entites.Car>
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "Car List";
+}
+
+<link href="~/css/admin/CarList.css" rel="stylesheet" />
+
+<div class="table-wrapper">
+    <div class="table-container">
+
+        <div class="table-header">
+            <h2>Car List</h2>
+            <button id="openAddCarModal" class="btn btn-primary">+ Add Car</button>
+        </div>
+
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Brand</th>
+                    <th>Model</th>  
+                    <th>Seaters</th>
+                    <th>Rental Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var car in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/images/carlist/@car.ImageUrl" alt="@car.Model" class="car-image" />
+                        </td>
+                        <td>@car.Brand</td>
+                        <td>@car.Model</td>
+                        <td>@car.Seaters</td>
+                        <td>₱@car.RentalPrice</td>
+                        <td>
+                            <span class="badge @(car.Status == "Available" ? "badge-success" : "badge-danger")">
+                                @car.Status
+                            </span>
+                        </td>
+                        <td class="actions">
+                                <a href="#" class="btn btn-edit" data-id="@car.CarId">✏️ Edit</a>
+                                <button type="button" class="btn btn-delete" data-id="@car.CarId">🗑 Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!-- Edit Car Modal -->
+<div id="editCarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span> <!-- Correct close button -->
+        <div class="modal-header">Edit Car Details</div>
+
+        <form id="editCarForm" method="post">
+            <input type="hidden" id="CarId" name="CarId" />
+
+            <div class="form-group">
+                <label>Brand</label>
+                <input type="text" id="Brand" name="Brand" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Model</label>
+                <input type="text" id="Model" name="Model" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Seaters</label>
+                <input type="number" id="Seaters" name="Seaters" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Rental Price</label>
+                <input type="number" id="RentalPrice" name="RentalPrice" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select id="Status" name="Status" class="form-select">
+                    <option value="Available">Available</option>
+                    <option value="Rented">Rented</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-remove">
+                    <i class="fas fa-trash-alt"></i> Remove
+                </button>
+                <div>
+                    <button type="button" id="saveCar" class="btn-save">✔ Save Changes</button>
+                    <button type="button" class="btn-cancel" id="cancelEdit">✖ Cancel</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Delete Car Modal -->
+<div id="deleteCarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeDeleteModal">&times;</span>
+        <div class="modal-header text-center">
+            <h4>Confirm Delete</h4>
+        </div>
+
+        <form id="deleteCarForm" method="post">
+            <input type="hidden" id="deleteCarId" name="CarId" />
+
+            <p class="text-center" style="font-size: 18px; font-weight: bold;">Are you sure you want to delete this car?</p>
+
+            <div class="form-group">
+                <label>Brand</label>
+                <input type="text" id="deleteBrand" class="form-input" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Model</label>
+                <input type="text" id="deleteModel" class="form-input" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Seaters</label>
+                <input type="text" id="deleteSeaters" class="form-input" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Rental Price</label>
+                <input type="text" id="deleteRentalPrice" class="form-input" readonly />
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <input type="text" id="deleteStatus" class="form-input" readonly />
+            </div>
+
+            <div class="button-group d-flex justify-content-center mt-3">
+                <button type="button" id="confirmDeleteCar" class="btn btn-danger btn-save">✔ Yes, Delete</button>
+                <button type="button" class="btn-cancel" id="cancelDelete">✖ Cancel</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Add Car Modal -->
+<div id="addCarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeAddModal">&times;</span>
+        <div class="modal-header">Add New Car</div>
+
+        <form id="addCarForm" method="post">
+            <div class="form-group">
+                <label>Brand</label>
+                <input type="text" id="addBrand" name="Brand" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Model</label>
+                <input type="text" id="addModel" name="Model" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Seaters</label>
+                <input type="number" id="addSeaters" name="Seaters" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Rental Price</label>
+                <input type="number" id="addRentalPrice" name="RentalPrice" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" id="addImageUrl" name="ImageUrl" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select id="addStatus" name="Status" class="form-select">
+                    <option value="Available">Available</option>
+                    <option value="Not Available">Not Available</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="button" id="saveAddCar" class="btn-save">✔ Add Car</button>
+                <button type="button" id="cancelAddCar" class="btn-cancel">✖ Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="~/js/carlist.js"></script>

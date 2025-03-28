@@ -1,0 +1,67 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin/dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="sidebar">
+        <ul>
+
+            <li class="logo-container">
+                <img src="~/images/UserIcons/dmWhiteLogo.png" alt="DM Car Rental Logo" />
+            </li>
+
+            <!--CAR LIST-->
+            <li>
+                <a asp-area="Admin" asp-controller="CarList" asp-action="CarList" class="nav-link">
+                    <div class="icon-wrapper"><i class="fas fa-car"></i></div>
+                    <span>Car Listing</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon-wrapper"><i class="fas fa-money-bill"></i></div>
+                    <span>Transaction</span>
+                </a>
+            </li>
+
+            <!--NOTIFICATION-->
+            <li>
+                <a asp-area="Admin" asp-controller="Notification" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fas fa-bell"></i></div>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
+            <!--INQUIRIES-->
+            <li>
+                <a asp-area="Admin" asp-controller="Inquiries" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fa-solid fa-message"></i></div>
+                    <span>Customer Inquiries</span>
+                </a>
+            </li>
+
+            <!--LOGOUT-->
+            <li>
+                <a href="javascript:void(0);" onclick="logoutUser()">
+                    <div class="icon-wrapper"><i class="fas fa-sign-out-alt"></i></div>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+    <main class="main-content">
+        @RenderBody()
+    </main>
+    <script src="/js/guest/logout.js"></script>
+</body>
+</html>

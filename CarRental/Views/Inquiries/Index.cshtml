@@ -1,0 +1,42 @@
+﻿@model List<CarRental.Models.Entites.CustomerInquiry>
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewData["Title"] = "Customer Inquiries";
+}
+
+<link href="~/css/admin/Inquiries.css" rel="stylesheet" />
+
+<div class="inquiry-container">
+    <!-- Sidebar -->
+    <div class="inquiry-sidebar">
+        <h2> All Messages</h2>
+        <input type="text" class="search-box" placeholder="Search...">
+
+        <ul class="message-list">
+            @foreach (var inquiry in Model)
+            {
+                <li onclick="loadMessages('@inquiry.Id', '@inquiry.Name', '@inquiry.Message.Replace("'", "\\'")')">
+                    <div class="message-preview">
+                        <strong>@inquiry.Name</strong><br />
+                        <small>@inquiry.Email</small><br />
+                        <small>@inquiry.Message.Substring(0, Math.Min(inquiry.Message.Length, 30))...</small>
+                    </div>
+                </li>
+            }
+        </ul>
+
+    </div>
+
+    <!-- Chat Box -->
+    <div class="inquiry-chat">
+        <div class="chat-header"></div>
+        <div class="messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/inquiries.js"></script>

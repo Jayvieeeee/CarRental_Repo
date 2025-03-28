@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/CSS/customer/dashboard.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <ul>
+
+            <li class="logo-container">
+                <img src="~/images/UserIcons/dmWhiteLogo.png" alt="DM Car Rental Logo" />
+            </li>
+
+            <li>
+                <a asp-controller="CustomerDashboard" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fas fa-home"></i></div>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="RentCar" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fas fa-car"></i></div>
+                    <span>Rent A Car</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="MyRental" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <span>My Rental</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Message" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fa-solid fa-message"></i></div>
+                    <span>Message</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Profile" asp-action="Index" class="nav-link">
+                    <div class="icon-wrapper"><i class="fas fa-user"></i></div>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0);" onclick="logoutUser()">
+                    <div class="icon-wrapper"><i class="fas fa-sign-out-alt"></i></div>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+    <main class="main-content">
+        @RenderBody()
+    </main>
+    <script src="/js/guest/logout.js"></script>
+</body>
+</html>

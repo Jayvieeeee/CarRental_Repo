@@ -1,0 +1,122 @@
+﻿/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #DEDEDE;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    gap: 30px;
+    margin-top: 50px; /* Reduced margin to center content */
+    max-width: 1200px;
+    padding: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Sidebar */
+.account-sidebar {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+    .account-sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        .account-sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+            .account-sidebar ul li a {
+                display: flex;
+                align-items: center;
+                padding: 12px;
+                border-radius: 10px;
+                text-decoration: none;
+                font-size: 16px;
+                color: black;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .account-sidebar ul li.active a {
+                background: #D32F2F;
+                color: white;
+            }
+            .account-sidebar ul li.active a {
+    background: #D32F2F;
+    color: white;
+}
+
+
+
+/* Profile Settings Section */
+.profile-settings {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* Allow profile form to expand */
+    max-width: 800px; /* Maximum width for profile form */
+}
+
+/* Profile Form */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+/* Save Button */
+.button-container {
+    text-align: center;
+}
+
+.save-btn {
+    background: #D32F2F;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+    .save-btn:hover {
+        background: #B71C1C; /* Darker red on hover */
+    }

@@ -1,0 +1,175 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 80px;
+    background: #242a2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 15px;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    z-index: 1000; /* Ensures sidebar is above main content */
+}
+
+    .sidebar .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 10px; /* Positions the logo near the top */
+        left: 0;
+    }
+
+        .sidebar .logo-container img {
+            width: 60px; /* Small size when sidebar is collapsed */
+            height: auto;
+            transition: width 0.3s ease-in-out; /* Smooth transition */
+        }
+
+    .sidebar:hover .logo-container img {
+        width: 150px; /* Large size when sidebar is expanded */
+    }
+
+    .sidebar:hover {
+        width: 250px;
+        align-items: flex-start;
+        padding-left: 30px;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+        .sidebar ul li {
+            margin: 20px 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+            .sidebar ul li a {
+                color: white;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                transition: all 0.3s ease-in-out;
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+                .sidebar ul li a:hover {
+                    background: white;
+                    color: black;
+                }
+
+                    .sidebar ul li a:hover .icon-wrapper {
+                        background: black; /* Makes icon background black */
+                    }
+
+                    .sidebar ul li a:hover i {
+                        color: white; /* Changes icon color to white */
+                    }
+
+                /* White circular background for icons */
+                .sidebar ul li a .icon-wrapper {
+                    width: 30px;
+                    height: 30px;
+                    background: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 10px;
+                    overflow: hidden; /* Ensures image stays inside the circle */
+                }
+
+                    .sidebar ul li a .icon-wrapper img {
+                        width: 37px; /* Adjust image size */
+                        height: 37px;
+                        object-fit: contain; /* Keeps aspect ratio */
+                    }
+
+
+                .sidebar ul li a i {
+                    color: #242a2b;
+                    font-size: 18px;
+                }
+
+                .sidebar ul li a span {
+                    opacity: 0;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-family: sans-serif;
+                    white-space: nowrap;
+                    transition: opacity 0.3s ease-in-out;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+    .sidebar:hover ul li a span {
+        opacity: 1;
+    }
+
+    .sidebar ul li:last-child {
+        height: 50%; /* Pushes logout to the bottom */
+    }
+
+        .sidebar ul li:last-child a span:hover {
+            color: black;
+        }
+
+        .sidebar ul li:last-child a i {
+            color: white;
+        }
+
+        .sidebar ul li:last-child a:hover i {
+            background: white;
+            color: black;
+        }
+
+        .sidebar ul li:last-child a .icon-wrapper {
+            background: none;
+        }
+
+
+
+.sidebar {
+    filter: none !important;
+}
+
+    .sidebar:hover ~ .main-content {
+        filter: blur(5px); /* Apply blur only to the main content */
+        pointer-events: none;
+        margin-left: 250px;
+    }
+
+
+/* Adjust the main content to start below the fixed header */
+.main-content {
+    margin-top: 80px; /* Adjust based on header height */
+    margin-left: 80px; /* Default width of collapsed sidebar */
+    transition: margin-left 0.3s ease-in-out; /* Smooth transition */
+    padding: 20px;
+}
+
+.sidebar:hover ~ .content-wrapper header {
+    left: 250px;
+    width: calc(100% - 250px);
+}
