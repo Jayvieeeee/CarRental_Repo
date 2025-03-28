@@ -162,6 +162,7 @@
     document.querySelectorAll(".faq-question").forEach((item) => {
         item.addEventListener("click", function () {
             toggleFAQ(this);
+
         });
     });
 

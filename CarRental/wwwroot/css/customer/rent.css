@@ -86,7 +86,7 @@
 
 /* Search button */
 .search-btn {
-    background-color: #6c7b3f;
+    background-color: #85874c;
     color: white;
     border: none;
     cursor: pointer;
@@ -153,15 +153,23 @@
     z-index: 2;
 }
 
-/* Rent badge */
+/* Rent badge - Button Style */
 .rent-badge {
-    background-color: #b1b33f;
+    background-color: #85874c;
     color: white;
-    padding: 5px 10px;
+    padding: 8px 15px;
     border-radius: 15px;
     font-size: 14px;
     font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+    .rent-badge:hover {
+        background-color: #949d34;
+        transform: translateY(-2px);
+    }
 
 /* Car image */
 .car-image-container {
@@ -198,12 +206,12 @@
 /* Details link */
 .details-link {
     color: #fff;
-    text-decoration: none;
+    text-decoration: underline;
     font-size: 14px;
 }
 
     .details-link:hover {
-        text-decoration: underline;
+        color: #7393B3;
     }
 
 /* Car features icons and info */
@@ -247,3 +255,301 @@
             width: 100%;
         }
 }
+
+
+/* TERMS AND CONDITIONS MODAL */
+#termsModal {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+    /* Modal Content - Centered */
+    #termsModal .modal-content {
+        background-color: #fff;
+        width: 40%;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Close Button */
+#termsModal .close {
+    position: absolute;
+    right: 15px; /* ✅ Fixed position */
+    top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #555;
+}
+
+    #termsModal .close:hover {
+        color: #000;
+    }
+
+/* Terms Box with Scroll */
+#termsModal .terms-box {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+/* Checkbox Container */
+#termsModal .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* Styled Accept Button */
+#acceptBtn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #85874c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    #acceptBtn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    #acceptBtn:hover:not(:disabled) {
+        background-color: #0056b3;
+    }
+
+
+
+/* RENTAL DETAILS MODAL */
+#rentalModal {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+    /* Modal Content - Rental Details */
+    #rentalModal .modal-content {
+        background-color: #fff;
+        width: 45%;
+        max-width: 600px;
+        padding: 25px;
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    /* Close Button for Rental Modal */
+    #rentalModal .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #555;
+    }
+
+        #rentalModal .close:hover {
+            color: #000;
+        }
+
+    /* Input Styles for Date Picker */
+    #rentalModal input[type="datetime-local"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    /* Vehicle Information */
+    #rentalModal p {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+        /* Highlight Total Payment */
+        #rentalModal p strong {
+            font-size: 16px;
+            color: #444;
+        }
+
+/* Confirm Rental Button */
+#confirmRentalBtn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #85874c; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    #confirmRentalBtn:hover {
+        background-color: #6c7b3f;
+    }
+
+
+
+.modal-divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0 20px 0;
+}
+
+/* Mobile Number Input */
+#mobileNumber {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* RENTER DETAILS MODAL */
+#renterModal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+    /* Modal Content */
+    #renterModal .modal-content {
+        background-color: #fff;
+        width: 45%;
+        max-width: 520px;
+        padding: 20px;
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    /* Modal Header */
+    #renterModal h2 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    /* Close Icon */
+    #renterModal .close {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+/* Form Container (Two Columns) */
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Single Column for Full Width Fields */
+.form-group:nth-child(5),
+.form-group:nth-child(6) {
+    grid-column: span 2;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Styling */
+#renterModal input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+    /* Disabled Email Field */
+    #renterModal input:disabled {
+        background-color: #f3f3f3;
+        cursor: not-allowed;
+    }
+
+/* Submit Button */
+#submitRenterBtn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #85874c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    #submitRenterBtn:hover {
+        background-color: #6c6f3f;
+    }

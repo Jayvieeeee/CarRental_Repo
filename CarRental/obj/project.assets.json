@@ -8744,11 +8744,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jayvie\\Desktop\\Repo_DmCarRental\\CarRental\\CarRental.csproj",
+      "projectUniqueName": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\CarRental.csproj",
       "projectName": "CarRental",
-      "projectPath": "C:\\Users\\Jayvie\\Desktop\\Repo_DmCarRental\\CarRental\\CarRental.csproj",
+      "projectPath": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\CarRental.csproj",
       "packagesPath": "C:\\Users\\Jayvie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jayvie\\Desktop\\Repo_DmCarRental\\CarRental\\obj\\",
+      "outputPath": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
