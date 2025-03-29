@@ -30,6 +30,7 @@
     padding: 0;
 }
 
+
 /* Search container with semi-transparent background */
 .search-container {
     display: flex;
@@ -225,11 +226,11 @@
 }
 
     .car-features span {
-        color: #85874c;
+        color: #fff;
         background: #242a2b;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 3px;
     }
 
 /* Responsive adjustments */
@@ -553,3 +554,216 @@
     #submitRenterBtn:hover {
         background-color: #6c6f3f;
     }
+
+
+   /* ============================
+   🎨 Car Details Modal Styles
+============================ */
+#detailsModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly dimmed */
+    backdrop-filter: blur(8px); /* Blurred background effect */
+    justify-content: center;
+    align-items: center;
+}
+
+#detailsModal .modal-content {
+    background-color: #fff;
+    padding: 25px;
+    width: 50%; /* Keep it compact */
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Close button */
+#detailsModal .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+#detailsModal .close:hover {
+    color: #000;
+}
+
+/* Modal Content Layout */
+#detailsModal .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Car Image */
+#carDetailsImage {
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Price styling - Positioned Below Image */
+#carDetailsPrice {
+    font-size: 22px;
+    font-weight: bold;
+    color: #6c7d47;
+    margin-top: 10px; /* Ensures spacing below the image */
+}
+
+/* Specifications section */
+#detailsModal h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Specifications list */
+#detailsModal .details-specs {
+    max-height: 250px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#detailsModal .details-specs ul {
+    list-style: none;
+    padding: 0;
+}
+
+#detailsModal .details-specs ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Rent Now button */
+#detailsModal .rent-btn {
+    background-color: #6c7d47;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#detailsModal .rent-btn:hover {
+    background-color: #5a6b3d;
+}
+
+
+
+
+/* ============================
+   ✅ Success Confirmation Modal Styles (Fixed)
+============================ */
+#successModal {
+    display: none; /* Ensure hidden on load */
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+    #successModal .modal-content {
+        background-color: #fff;
+        width: 50%;
+        max-width: 450px;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        font-family: 'Arial', sans-serif;
+        position: relative;
+    }
+
+    /* Close Button */
+    #successModal .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #555;
+        transition: 0.3s;
+    }
+
+        #successModal .close:hover {
+            color: #222;
+        }
+
+/* Success Icon */
+.success-icon {
+    font-size: 90px;
+    color: #6c7d47;
+    margin-bottom: 15px;
+}
+
+/* Headings */
+#successModal h2 {
+    font-size: 28px;
+    color: #85874c;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#successModal p strong {
+    font-size: 16px;
+    font-weight: bold;
+    color: #85874c;
+    margin-bottom: 15px;
+}
+
+#successModal p {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+/* Reference Number Styling */
+#referenceNumber {
+    color: #000;
+    font-weight: bold;
+}
+
+/* OK Button */
+#successModal .rent-btn {
+    background-color: #85874c;
+    color: #fff;
+    padding: 10px 60px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    #successModal .rent-btn:hover {
+        background-color: #5a6b3d;
+    }
+

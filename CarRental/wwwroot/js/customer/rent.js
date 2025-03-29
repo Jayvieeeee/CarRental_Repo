@@ -211,3 +211,231 @@ submitRenterBtn.addEventListener("click", function () {
     renterModal.style.display = "none"; // Hide Renter Modal
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const detailsModal = document.getElementById("detailsModal");
+    const closeDetailsModal = document.getElementById("closeDetailsModal");
+
+    // ✅ Open Car Details Modal on "Details" Click
+    document.querySelector(".car-list").addEventListener("click", function (e) {
+        const detailsButton = e.target.closest(".details-link");
+        if (detailsButton) {
+            e.preventDefault();
+            const carCard = detailsButton.closest(".car-card");
+
+            // Get Car Details
+            const carModel = carCard.querySelector("h2").innerText;
+            const carImage = carCard.querySelector(".car-image").src;
+            const carPrice = carCard.querySelector(".price").innerText;
+
+            // Update Modal Content
+            document.getElementById("carDetailsTitle").innerText = carModel;
+            document.getElementById("carDetailsImage").src = carImage;
+            document.getElementById("carDetailsPrice").innerText = carPrice;
+
+            // ✅ Show Modal
+            detailsModal.style.display = "flex";
+        }
+    });
+
+    // ✅ Close Car Details Modal
+    closeDetailsModal.addEventListener("click", function () {
+        detailsModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (e) {
+        if (e.target === detailsModal) {
+            detailsModal.style.display = "none";
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const rentBadges = document.querySelectorAll(".rent-badge");
+    const detailsLinks = document.querySelectorAll(".details-link");
+    const rentNowBtn = document.getElementById("rentNowBtn");
+    const agreeCheckbox = document.getElementById("agreeCheckbox");
+    const acceptBtn = document.getElementById("acceptBtn");
+
+    let selectedCarId = null;
+
+    // ✅ Handle Rent Button Click (From Car List)
+    rentBadges.forEach((btn) => {
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            selectedCarId = this.getAttribute("data-id");
+            openTermsModal(selectedCarId);
+        });
+    });
+
+    // ✅ Handle Details Button Click
+    detailsLinks.forEach((btn) => {
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            selectedCarId = this.getAttribute("data-id");
+            openDetailsModal(selectedCarId);
+        });
+    });
+
+    // ✅ Handle "Rent Now" Button in Car Details Modal
+    rentNowBtn.addEventListener("click", function () {
+        if (selectedCarId) {
+            closeModal("detailsModal"); // Close Car Details
+            openTermsModal(selectedCarId); // Go to Terms and Conditions
+        }
+    });
+
+    // ✅ Handle Accept Button in Terms Modal
+    acceptBtn.addEventListener("click", function () {
+        if (selectedCarId) {
+            closeModal("termsModal"); // Close Terms Modal
+            openRentalModal(selectedCarId); // Proceed to Rental Modal
+        }
+    });
+
+    // ✅ Enable Accept Button Only if Checkbox is Checked
+    agreeCheckbox.addEventListener("change", function () {
+        acceptBtn.disabled = !agreeCheckbox.checked;
+    });
+
+    // ============================
+    // ✅ Open Terms Modal
+    // ============================
+    function openTermsModal(carId) {
+        selectedCarId = carId;
+        openModal("termsModal");
+    }
+
+    // ============================
+    // ✅ Open Rental Modal
+    // ============================
+    function openRentalModal(carId) {
+        const rentalModal = document.getElementById("rentalModal");
+        if (rentalModal) {
+            document.getElementById("carModel").textContent = `Car ID: ${carId}`;
+            openModal("rentalModal");
+        }
+    }
+
+    // ============================
+    // ✅ Open Car Details Modal
+    // ============================
+    function openDetailsModal(carId) {
+        const carCard = document.querySelector(`.car-card [data-id="${carId}"]`).closest(".car-card");
+
+        if (carCard) {
+            document.getElementById("carDetailsTitle").textContent = carCard.dataset.makeModel;
+            document.getElementById("carDetailsImage").src = carCard.querySelector(".car-image").src;
+            document.getElementById("carDetailsPrice").innerHTML = `<strong>${carCard.querySelector(".price").textContent}</strong>`;
+            document.getElementById("makeModel").textContent = carCard.dataset.makeModel;
+            document.getElementById("seaters").textContent = carCard.dataset.seaters;
+            document.getElementById("fuelType").textContent = carCard.dataset.fuelType;
+            document.getElementById("fuelTankCapacity").textContent = carCard.dataset.fuelTankCapacity;
+            document.getElementById("transmission").textContent = carCard.dataset.transmission;
+            document.getElementById("groundClearance").textContent = carCard.dataset.groundClearance;
+
+            openModal("detailsModal");
+        }
+    }
+
+    // ============================
+    // ✅ Open and Close Modal Helpers
+    // ============================
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "flex";
+        document.body.classList.add("modal-open");
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+        document.body.classList.remove("modal-open");
+    }
+
+    // ✅ Close Modals on Click
+    document.querySelectorAll(".modal .close").forEach((closeBtn) => {
+        closeBtn.addEventListener("click", function () {
+            closeModal(this.closest(".modal").id);
+        });
+    });
+});
+
+
+
+
+// SUCCESS MODAL
+document.addEventListener("DOMContentLoaded", function () {
+    const renterModal = document.getElementById("renterModal");
+    const submitRenterBtn = document.getElementById("submitRenterBtn");
+    const successModal = document.getElementById("successModal");
+    const referenceNumberSpan = document.getElementById("referenceNumber");
+    const closeSuccessModal = document.querySelector("#successModal .close");
+    const successOkBtn = document.getElementById("successOkBtn");
+
+    // Ensure the success modal is fully hidden on page load
+    if (successModal) {
+        successModal.style.display = "none";
+        successModal.style.opacity = "0"; // Prevent flash effect
+    }
+
+    // Function to generate a random reference number
+    function generateReferenceNumber() {
+        return "TXN" + Math.random().toString(36).substr(2, 8).toUpperCase();
+    }
+
+    // Close Modal Function
+    function closeModal(modal) {
+        if (modal) {
+            modal.style.display = "none";
+            modal.style.opacity = "0";
+        }
+    }
+
+    // Open Modal Function
+    function openModal(modal) {
+        if (modal) {
+            modal.style.display = "flex"; // Ensure flex is applied properly
+            modal.style.opacity = "1"; // Make sure it's visible
+        }
+    }
+
+    // Submit Renter Details
+    submitRenterBtn.addEventListener("click", function () {
+        // Get input values on button click
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mobileNumber = document.getElementById("mobileNumber").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const licenseNumber = document.getElementById("licenseNumber").value.trim();
+
+        // Validate all fields
+        if (!firstName || !lastName || !email || !mobileNumber || !address || !licenseNumber) {
+            alert("❗ Please fill in all the required fields.");
+            return; // Stop execution if fields are missing
+        }
+
+        closeModal(renterModal); // Close renter modal
+        referenceNumberSpan.textContent = generateReferenceNumber(); // Generate reference number
+        openModal(successModal); // Show success modal
+    });
+
+    // Close Success Modal on X Button Click
+    closeSuccessModal.addEventListener("click", function () {
+        closeModal(successModal);
+    });
+
+    // Close Success Modal on OK Button Click
+    successOkBtn.addEventListener("click", function () {
+        closeModal(successModal);
+    });
+
+    // Close modal when clicking outside content
+    window.addEventListener("click", function (event) {
+        if (event.target === successModal) closeModal(successModal);
+    });
+});
+
+
+
+

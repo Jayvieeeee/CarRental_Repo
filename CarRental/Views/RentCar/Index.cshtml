@@ -55,11 +55,18 @@
 
 <body>
 
-    <!-- CAR LIST IMAGES-->
-    <div class="car-list">
+<!-- CAR LIST IMAGES-->
+<div class="car-list">
         @foreach (var car in Model)
         {
-            <div class="car-card">
+            <div class="car-card"
+                 data-make-model="@car.Brand @car.Model"
+                 data-seaters="@car.Seaters"
+                 data-fuel-type="@car.FuelType"
+                 data-fuel-tank-capacity="@car.FuelTankCapacity"
+                 data-transmission="@car.Transmission"
+                 data-ground-clearance="@car.GroundClearance">
+
                 <div class="car-header">
                     <h2>@car.Brand @car.Model</h2>
                     <a href="#" class="rent-badge" data-id="@car.CarId">Rent</a>
@@ -80,54 +87,28 @@
         }
     </div>
 
-<!-- CAR DETAILS MODAL -->
-<div id="carDetailsModal" class="modal">
+<!-- Car Details Modal -->
+<div id="detailsModal" class="details-modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-body">
-                <div class="car-details-container">
-                    <div class="car-info">
-                        <h2 id="carName"></h2>
-                        <img id="carImage" src="#" alt="Car Image" class="car-details-image">
-                        <div class="price">
-                            <span id="carPrice"></span> per day
-                        </div>
+            <span class="close" id="closeDetailsModal">&times;</span>
+            <h2 id="carDetailsTitle">Car Details</h2>
+            <div class="details-container">
+                <img id="carDetailsImage" src="" alt="Car Image" />
+                <div>
+                    <p id="carDetailsPrice"><strong>₱0</strong> per day</p>
+                    <h3>Specifications</h3>
+                    <div id="carDetailsSpecs" class="details-specs">
+                        <ul>
+                            <li><strong>Make & Model:</strong> <span id="makeModel">-</span></li>
+                            <li><strong>Seating Capacity:</strong> <span id="seaters">-</span></li>
+                            <li><strong>Fuel Type:</strong> <span id="fuelType">-</span></li>
+                            <li><strong>Fuel Tank Capacity:</strong> <span id="fuelTankCapacity">-</span></li>
+                            <li><strong>Transmission:</strong> <span id="transmission">-</span></li>
+                            <li><strong>Ground Clearance:</strong> <span id="groundClearance">-</span></li>
+                        </ul>
                     </div>
-
-                    <div class="car-specs">
-                        <h3>Specifications</h3>
-                        <div id="carSpecifications" class="specs-box">
-                            <!-- Dynamic Content Injected Here -->
-                        </div>
-                    </div>
+                    <button id="rentNowBtn" class="rent-btn">Rent Now</button>
                 </div>
-                <button id="rentNowBtn" class="rent-btn">Rent Now</button>
-            </div>
-        </div>
-    </div>
-
-<!-- CAR DETAILS MODAL -->
-<div id="carDetailsModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-body">
-                <div class="car-details-container">
-                    <div class="car-info">
-                        <h2 id="carName"></h2>
-                        <img id="carImage" src="#" alt="Car Image" class="car-details-image">
-                        <div class="price">
-                            <span id="carPrice"></span> per day
-                        </div>
-                    </div>
-
-                    <div class="car-specs">
-                        <h3>Specifications</h3>
-                        <div id="carSpecifications" class="specs-box">
-                            <!-- Dynamic Content Injected Here -->
-                        </div>
-                    </div>
-                </div>
-                <button id="rentNowBtn" class="rent-btn">Rent Now</button>
             </div>
         </div>
     </div>
@@ -183,7 +164,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Renter Details</h2>
-            <hr class="modal-divider"> <!-- Added Divider Below Title -->
+            <hr class="modal-divider">
 
             <div class="form-container">
                 <div class="form-group">
@@ -221,6 +202,22 @@
         </div>
     </div>
 
+<!-- SUCCESS CONFIRMATION MODAL -->
+<div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Request Has Been Sent</h2>
+            <p><strong>Reference Number:</strong> <span id="referenceNumber">Loading...</span></p>
+            <p>
+                You will receive an email regarding the status of your booking within 24 hours,
+                including confirmation details and any further instructions.
+            </p>
+            <button id="successOkBtn" class="rent-btn">OK</button>
+        </div>
+    </div>
 
 
 <script src="~/js/customer/rent.js"></script>
