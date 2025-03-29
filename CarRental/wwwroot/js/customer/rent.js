@@ -77,13 +77,7 @@
         }
     });
 
-    // ============================
-    // ✅ Show Rental Details Modal After Accepting Terms
-    // ============================
-    acceptBtn.addEventListener("click", function () {
-        termsModal.style.display = "none"; // Hide Terms Modal
-        showRentalDetails(); // Show Rental Details
-    });
+
 
     // ============================
     // ✅ Show Rental Details Modal
@@ -111,20 +105,86 @@
     });
 
     function updateTotalPayment() {
-        const pickupDate = new Date(document.getElementById("pickupDate").value);
-        const returnDate = new Date(document.getElementById("returnDate").value);
+        const pickupDateInput = document.getElementById("pickupDate");
+        const returnDateInput = document.getElementById("returnDate");
 
-        if (pickupDate && returnDate && returnDate > pickupDate) {
-            const diffTime = Math.abs(returnDate - pickupDate);
-            const daysRented = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            daysRentedElem.innerText = daysRented;
-            const totalPayment = daysRented * selectedCar.ratePerDay;
-            totalPaymentElem.innerText = `₱${totalPayment.toLocaleString()}`;
-        } else {
+        // ✅ Get the selected dates
+        const pickupDateValue = pickupDateInput.value;
+        const returnDateValue = returnDateInput.value;
+
+        if (!pickupDateValue) {
             daysRentedElem.innerText = "0";
             totalPaymentElem.innerText = "₱0";
+            return; // Stop if no pickup date is selected
         }
+
+        const pickupDate = new Date(pickupDateValue);
+        const returnDate = new Date(returnDateValue);
+        const today = new Date(); // Get today's date without time
+        today.setHours(0, 0, 0, 0); // Ensure date comparison without time
+
+        // ============================
+        // ✅ Pickup Date Validation
+        // ============================
+        if (pickupDate < today) {
+            alert("❌ Error: Pickup date cannot be in the previous date.");
+            pickupDateInput.value = ""; // Clear invalid date
+            daysRentedElem.innerText = "0";
+            totalPaymentElem.innerText = "₱0";
+            return;
+        }
+
+        // ✅ Set minimum return date dynamically after pickup date selection
+        if (pickupDateValue) {
+            returnDateInput.setAttribute("min", pickupDateValue);
+        }
+
+        // ============================
+        // ✅ Return Date Validation
+        // ============================
+        if (!returnDateValue || returnDate <= pickupDate) {
+            daysRentedElem.innerText = "0";
+            totalPaymentElem.innerText = "₱0";
+            return; // Stop if return date is invalid
+        }
+
+        // ============================
+        // ✅ Calculate days rented and total payment
+        // ============================
+        const diffTime = Math.abs(returnDate - pickupDate);
+        const daysRented = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+        daysRentedElem.innerText = daysRented;
+
+        // ✅ Calculate and update the total payment
+        const totalPayment = daysRented * selectedCar.ratePerDay;
+        totalPaymentElem.innerText = `₱${totalPayment.toLocaleString()}`;
     }
+
+    // ============================
+    // ✅ Ensure Date Pickers are Correctly Configured
+    // ============================
+    document.addEventListener("DOMContentLoaded", function () {
+        const pickupDateInput = document.getElementById("pickupDate");
+        const returnDateInput = document.getElementById("returnDate");
+
+        // ✅ Set minimum date for pickup to today
+        const today = new Date().toISOString().split("T")[0];
+        pickupDateInput.setAttribute("min", today);
+
+        // ✅ Update return date min dynamically after selecting pickup date
+        pickupDateInput.addEventListener("change", function () {
+            if (pickupDateInput.value) {
+                returnDateInput.setAttribute("min", pickupDateInput.value);
+            } else {
+                returnDateInput.setAttribute("min", today);
+            }
+            updateTotalPayment(); // Auto-update payment after date change
+        });
+
+        // ✅ Update total payment when return date is selected
+        returnDateInput.addEventListener("change", updateTotalPayment);
+    });
+
 
     // ============================
     // ✅ Close Rental Modal
