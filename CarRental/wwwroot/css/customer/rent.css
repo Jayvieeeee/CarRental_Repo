@@ -210,10 +210,12 @@
 
 /* Details link */
 .details-link {
+    pointer-events: auto !important;
+    z-index: 10;
+    position: relative;
     color: #fff;
-    text-decoration: underline;
-    font-size: 14px;
 }
+
 
     .details-link:hover {
         color: #7393B3;

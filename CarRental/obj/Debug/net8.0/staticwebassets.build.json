@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qmbCDOFpgA42SLzq9BEbbJmOz8Qmfv+5KsJohOCMrxo=",
+  "Hash": "HebC7Z48QnSBV2j0D6kCVsTW3FoG3eWcvTi1TDFnqDo=",
   "Source": "CarRental",
   "BasePath": "_content/CarRental",
   "Mode": "Default",
@@ -220,8 +220,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "3qx2l0g1nn",
-      "Integrity": "xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U=",
+      "Fingerprint": "44eibvdq0f",
+      "Integrity": "DNEc/vlXutGkdItDtj4xsxklYqLcDCYxz6qvRDjGemI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\customer\\rent.css"
@@ -1228,8 +1228,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "wnlnxs7g8z",
-      "Integrity": "bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8=",
+      "Fingerprint": "yp9yky7n6p",
+      "Integrity": "tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\rent.js"
@@ -3256,7 +3256,7 @@
       ]
     },
     {
-      "Route": "css/customer/rent.3qx2l0g1nn.css",
+      "Route": "css/customer/rent.44eibvdq0f.css",
       "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\css\\customer\\rent.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3266,7 +3266,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16302"
+          "Value": "16330"
         },
         {
           "Name": "Content-Type",
@@ -3274,11 +3274,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U=\""
+          "Value": "\"DNEc/vlXutGkdItDtj4xsxklYqLcDCYxz6qvRDjGemI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 12:09:25 GMT"
+          "Value": "Sun, 30 Mar 2025 13:58:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3288,7 +3288,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "3qx2l0g1nn"
+          "Value": "44eibvdq0f"
         },
         {
           "Name": "label",
@@ -3296,7 +3296,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U="
+          "Value": "sha256-DNEc/vlXutGkdItDtj4xsxklYqLcDCYxz6qvRDjGemI="
         }
       ]
     },
@@ -3311,7 +3311,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16302"
+          "Value": "16330"
         },
         {
           "Name": "Content-Type",
@@ -3319,11 +3319,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U=\""
+          "Value": "\"DNEc/vlXutGkdItDtj4xsxklYqLcDCYxz6qvRDjGemI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 12:09:25 GMT"
+          "Value": "Sun, 30 Mar 2025 13:58:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3333,7 +3333,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U="
+          "Value": "sha256-DNEc/vlXutGkdItDtj4xsxklYqLcDCYxz6qvRDjGemI="
         }
       ]
     },
@@ -7202,7 +7202,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "17535"
+          "Value": "20012"
         },
         {
           "Name": "Content-Type",
@@ -7210,11 +7210,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8=\""
+          "Value": "\"tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 12:15:20 GMT"
+          "Value": "Sun, 30 Mar 2025 14:12:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7224,12 +7224,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8="
+          "Value": "sha256-tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM="
         }
       ]
     },
     {
-      "Route": "js/customer/rent.wnlnxs7g8z.js",
+      "Route": "js/customer/rent.yp9yky7n6p.js",
       "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -7239,7 +7239,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "17535"
+          "Value": "20012"
         },
         {
           "Name": "Content-Type",
@@ -7247,11 +7247,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8=\""
+          "Value": "\"tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 12:15:20 GMT"
+          "Value": "Sun, 30 Mar 2025 14:12:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7261,7 +7261,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "wnlnxs7g8z"
+          "Value": "yp9yky7n6p"
         },
         {
           "Name": "label",
@@ -7269,7 +7269,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8="
+          "Value": "sha256-tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM="
         }
       ]
     },

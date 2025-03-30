@@ -58,8 +58,12 @@
             this.setupEventListeners();
 
             // Set minimum date for date pickers
-            const today = new Date().toISOString().split('T')[0];
-            this.pickupDateInput.setAttribute('min', today);
+            const today = new Date();
+            const todayFormatted = today.toISOString().split('T')[0];
+            this.pickupDateInput.setAttribute('min', todayFormatted);
+
+            // Disable all previous dates in the date picker
+            this.disablePastDates(this.pickupDateInput);
 
             this.returnDateInput.disabled = true; // Disable return date initially
             this.setupDateValidation();
@@ -90,19 +94,25 @@
 
             // Success modal
             this.successOkBtn.addEventListener("click", () => this.closeSuccessModal());
+
+            // Rent Now button in details modal
+            this.rentNowBtn.addEventListener("click", () => {
+                this.closeModal(this.detailsModal);
+                this.openTermsModal();
+            });
         }
 
         setupModalCloseHandlers() {
-            // Close buttons
-            document.querySelectorAll(".modal .close").forEach(closeBtn => {
+            // Close buttons - handle both regular modals and details modal
+            document.querySelectorAll(".modal .close, .details-modal .close").forEach(closeBtn => {
                 closeBtn.addEventListener("click", (e) => {
-                    const modal = e.target.closest(".modal");
+                    const modal = e.target.closest(".modal, .details-modal");
                     this.closeModal(modal);
                 });
             });
 
-            // Click outside to close
-            document.querySelectorAll(".modal").forEach(modal => {
+            // Click outside to close - handle both regular modals and details modal
+            document.querySelectorAll(".modal, .details-modal").forEach(modal => {
                 modal.addEventListener("click", (e) => {
                     if (e.target === modal) {
                         this.closeModal(modal);
@@ -111,9 +121,10 @@
             });
         }
 
+
         handleCarListClick(e) {
             const rentButton = e.target.closest(".rent-badge");
-            const detailsButton = e.target.closest(".details-link");
+            const detailsButton = e.target.closest(".details-link") || (e.target.tagName === "A" && e.target.classList.contains("details-link"));
 
             if (rentButton) {
                 e.preventDefault();
@@ -138,12 +149,34 @@
 
         handleDetailsButtonClick(detailsButton) {
             const carCard = detailsButton.closest(".car-card");
-            this.selectedCar.id = detailsButton.dataset.id;
+
+            // Store all car details including the rate per day
+            this.selectedCar = {
+                id: detailsButton.dataset.id,
+                model: carCard.querySelector("h2").innerText,
+                ratePerDay: this.parsePrice(carCard.querySelector(".price").innerText),
+                price: carCard.querySelector(".price").innerText,
+                image: carCard.querySelector(".car-image").src,
+                makeModel: carCard.dataset.makeModel,
+                seaters: carCard.dataset.seaters,
+                fuelType: carCard.dataset.fuelType,
+                fuelTankCapacity: carCard.dataset.fuelTank,
+                transmission: carCard.dataset.transmission,
+                groundClearance: carCard.dataset.clearance
+            };
 
             // Update details modal content
-            document.getElementById("carDetailsTitle").textContent = carCard.querySelector("h2").innerText;
-            document.getElementById("carDetailsImage").src = carCard.querySelector(".car-image").src;
-            document.getElementById("carDetailsPrice").innerText = carCard.querySelector(".price").innerText;
+            document.getElementById("carDetailsTitle").textContent = this.selectedCar.model;
+            document.getElementById("carDetailsImage").src = this.selectedCar.image;
+            document.getElementById("carDetailsPrice").innerHTML = `<strong>${this.selectedCar.price}</strong> per day`;
+
+            // Update specifications
+            document.getElementById("makeModel").textContent = this.selectedCar.makeModel;
+            document.getElementById("seaters").textContent = this.selectedCar.seaters;
+            document.getElementById("fuelType").textContent = this.selectedCar.fuelType;
+            document.getElementById("fuelTankCapacity").textContent = this.selectedCar.fuelTankCapacity;
+            document.getElementById("transmission").textContent = this.selectedCar.transmission;
+            document.getElementById("groundClearance").textContent = this.selectedCar.groundClearance;
 
             this.openModal(this.detailsModal);
         }
@@ -210,25 +243,58 @@
         // ======================
 
         openRentalModal() {
-            if (!this.selectedCar.model) {
+            if (!this.selectedCar.model || !this.selectedCar.ratePerDay) {
                 this.showError("Error: No car selected. Please try again.");
                 return;
             }
 
+            // Reset the date inputs and disable return date
+            this.pickupDateInput.value = "";
+            this.returnDateInput.value = "";
+            this.returnDateInput.disabled = true;
+            this.resetPaymentDisplay();
+
             this.carModelElem.innerText = this.selectedCar.model;
             this.ratePerDayElem.innerText = this.formatPrice(this.selectedCar.ratePerDay);
-            this.updateTotalPayment();
 
             this.openModal(this.rentalModal);
+        }
+
+        disablePastDates(dateInput) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            dateInput.addEventListener('input', (e) => {
+                const selectedDate = new Date(e.target.value);
+                selectedDate.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    this.showError("Please select today's date or a future date");
+                    e.target.value = '';
+                    this.resetPaymentDisplay();
+                }
+            });
         }
 
         setupDateValidation() {
             this.pickupDateInput.addEventListener('change', () => {
                 if (this.pickupDateInput.value) {
+                    const pickupDate = new Date(this.pickupDateInput.value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    if (pickupDate < today) {
+                        this.showError("Pickup date cannot be in the previous days");
+                        this.pickupDateInput.value = '';
+                        this.returnDateInput.disabled = true;
+                        this.returnDateInput.value = '';
+                        this.resetPaymentDisplay();
+                        return;
+                    }
+
                     this.returnDateInput.disabled = false;
                     this.returnDateInput.min = this.pickupDateInput.value;
 
-                    // If return date is before pickup, clear it
                     if (this.returnDateInput.value && this.returnDateInput.value < this.pickupDateInput.value) {
                         this.returnDateInput.value = '';
                         this.resetPaymentDisplay();
@@ -246,15 +312,12 @@
             });
         }
 
-        // Update the updateTotalPayment() method:
         updateTotalPayment() {
-            // Clear payment if no pickup date
             if (!this.pickupDateInput.value) {
                 this.resetPaymentDisplay();
                 return;
             }
 
-            // Only calculate if both dates are valid
             if (this.pickupDateInput.value && this.returnDateInput.value) {
                 const pickupDate = new Date(this.pickupDateInput.value);
                 const returnDate = new Date(this.returnDateInput.value);
@@ -266,12 +329,10 @@
                     return;
                 }
 
-                // Calculate rental period
                 const diffTime = Math.abs(returnDate - pickupDate);
                 const daysRented = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 const totalPayment = daysRented * this.selectedCar.ratePerDay;
 
-                // Update display
                 this.daysRentedElem.innerText = daysRented;
                 this.totalPaymentElem.innerText = this.formatPrice(totalPayment);
                 this.confirmRentalBtn.disabled = false;
@@ -314,7 +375,6 @@
             e.preventDefault();
             console.log("Submit button clicked - starting validation");
 
-            // Validate form
             if (!this.validateRenterForm()) {
                 console.log("Form validation failed");
                 return;
@@ -322,21 +382,17 @@
 
             console.log("Form validation passed - proceeding to show success modal");
 
-            // Close renter modal
             this.closeModal(this.renterModal);
 
-            // Generate and display reference number
             const refNumber = this.generateReferenceNumber();
             console.log("Generated reference number:", refNumber);
             this.referenceNumberSpan.textContent = refNumber;
 
-            // Show success modal
             console.log("Attempting to open success modal");
             this.openModal(this.successModal);
         }
 
         validateRenterForm() {
-            // Get form values
             const formData = {
                 firstName: this.firstNameInput.value.trim(),
                 lastName: this.lastNameInput.value.trim(),
@@ -348,12 +404,10 @@
 
             console.log("Form data:", formData);
 
-            // Validation patterns
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             const mobilePattern = /^[0-9]{11}$/;
-            const licensePattern = /^[A-Za-z]{2,3}-[0-9]{2,4}-[0-9]{4,5}$/; // Updated to match your placeholder format
+            const licensePattern = /^[A-Za-z]{2,3}-[0-9]{2,4}-[0-9]{4,5}$/;
 
-            // Check empty fields
             for (const [field, value] of Object.entries(formData)) {
                 if (!value) {
                     this.showError(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
@@ -361,19 +415,16 @@
                 }
             }
 
-            // Validate email
             if (!emailPattern.test(formData.email)) {
                 this.showError("Please enter a valid email address (e.g., example@email.com).");
                 return false;
             }
 
-            // Validate mobile number
             if (!mobilePattern.test(formData.mobileNumber)) {
                 this.showError("Please enter a valid 11-digit mobile number (e.g., 09123456789).");
                 return false;
             }
 
-            // Validate license number (updated to match your placeholder format)
             if (!licensePattern.test(formData.licenseNumber)) {
                 this.showError("License number format should be ABC-1234-56789 (as shown in the placeholder).");
                 return false;
@@ -408,21 +459,18 @@
             const numbers = '0123456789';
             let result = 'TXN-';
 
-            // Generate 3 random letters
             for (let i = 0; i < 3; i++) {
                 result += letters.charAt(Math.floor(Math.random() * letters.length));
             }
 
             result += '-';
 
-            // Generate 4 random numbers
             for (let i = 0; i < 4; i++) {
                 result += numbers.charAt(Math.floor(Math.random() * numbers.length));
             }
 
             result += '-';
 
-            // Generate 2 random letters
             for (let i = 0; i < 2; i++) {
                 result += letters.charAt(Math.floor(Math.random() * letters.length));
             }
