@@ -687,14 +687,14 @@
     <StaticWebAssetEndpoint Include="_content/CarRental/js/customer/rent.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\rent.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"20012"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 14:12:06 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-iSJyoltpmstk6u9sfYX0r8evaV9SLQptkC6Y/Gs1eTA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"20002"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022iSJyoltpmstk6u9sfYX0r8evaV9SLQptkC6Y/Gs1eTA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 14:52:00 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/CarRental/js/customer/rent.yp9yky7n6p.js">
+    <StaticWebAssetEndpoint Include="_content/CarRental/js/customer/rent.tv57xu57xo.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\rent.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"yp9yky7n6p"},{"Name":"integrity","Value":"sha256-tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM="},{"Name":"label","Value":"_content/CarRental/js/customer/rent.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"20012"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022tvFNkv7EyxZyvyy9Yg6b62IyQP9P32AQdhL4bHOY/RM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 14:12:06 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"tv57xu57xo"},{"Name":"integrity","Value":"sha256-iSJyoltpmstk6u9sfYX0r8evaV9SLQptkC6Y/Gs1eTA="},{"Name":"label","Value":"_content/CarRental/js/customer/rent.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"20002"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022iSJyoltpmstk6u9sfYX0r8evaV9SLQptkC6Y/Gs1eTA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 14:52:00 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CarRental/js/guest/logout.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\guest\logout.js'))</AssetFile>

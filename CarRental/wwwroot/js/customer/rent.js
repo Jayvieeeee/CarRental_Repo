@@ -181,10 +181,7 @@
             this.openModal(this.detailsModal);
         }
 
-        // ======================
-        // MODAL MANAGEMENT
-        // ======================
-
+       // MODAL MANAGEMENT
         showElement(element) {
             element.style.display = "flex";
             document.body.classList.add("modal-open");
@@ -210,10 +207,7 @@
             this.openModal(this.termsModal);
         }
 
-        // ======================
-        // TERMS MODAL FUNCTIONS
-        // ======================
-
+        // TERMS AND CONDITION HANDLERS
         handleTermsScroll(e) {
             const termsBox = e.target;
             const scrolledToBottom = termsBox.scrollTop + termsBox.clientHeight >= termsBox.scrollHeight - 1;
@@ -238,10 +232,7 @@
             this.acceptBtn.disabled = !this.agreeCheckbox.checked;
         }
 
-        // ======================
-        // RENTAL MODAL FUNCTIONS
-        // ======================
-
+       // RENTAL MODAL HANDLERS
         openRentalModal() {
             if (!this.selectedCar.model || !this.selectedCar.ratePerDay) {
                 this.showError("Error: No car selected. Please try again.");
@@ -362,10 +353,7 @@
             this.openRenterModal();
         }
 
-        // ======================
-        // RENTER DETAILS HANDLING
-        // ======================
-
+        // RENTER DETAILS HANDLER
         openRenterModal() {
             this.resetRenterModalState();
             this.openModal(this.renterModal);
@@ -392,6 +380,7 @@
             this.openModal(this.successModal);
         }
 
+        // VALIDATION OF RENTER DETAILS
         validateRenterForm() {
             const formData = {
                 firstName: this.firstNameInput.value.trim(),
@@ -406,7 +395,7 @@
 
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             const mobilePattern = /^[0-9]{11}$/;
-            const licensePattern = /^[A-Za-z]{2,3}-[0-9]{2,4}-[0-9]{4,5}$/;
+            const licensePattern = /^[A-Za-z]\d{2}-\d{3}-\d{5}$/;
 
             for (const [field, value] of Object.entries(formData)) {
                 if (!value) {
@@ -434,17 +423,13 @@
             return true;
         }
 
-        // ======================
-        // SUCCESS MODAL
-        // ======================
+        // CLOSE MODAL FUNCTION
 
         closeSuccessModal() {
             this.closeModal(this.successModal);
         }
 
-        // ======================
         // UTILITY FUNCTIONS
-        // ======================
 
         parsePrice(priceString) {
             return parseInt(priceString.replace("₱", "").replace(",", "").split(" ")[0]);
