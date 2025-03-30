@@ -1038,8 +1038,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>m4kyb2gv96</Fingerprint>
-      <Integrity>mnIM4VZAfUmGCgHZe36qr+SiRKzKSE1jUYaxcjIBJYU=</Integrity>
+      <Fingerprint>22w1dypwfr</Fingerprint>
+      <Integrity>diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customer\rent.js'))</OriginalItemSpec>

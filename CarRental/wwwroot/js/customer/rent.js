@@ -88,108 +88,110 @@
             return;
         }
 
-        // Update rental details in modal
         carModelElem.innerText = selectedCar.model;
         ratePerDayElem.innerText = `₱${selectedCar.ratePerDay.toLocaleString()}`;
         updateTotalPayment();
 
-        // Show Rental Details Modal
         rentalModal.style.display = "flex";
     }
 
-    // ============================
-    // ✅ Update Total Payment Calculation
-    // ============================
     document.querySelectorAll("#pickupDate, #returnDate").forEach(input => {
         input.addEventListener("change", updateTotalPayment);
     });
 
+    // ✅ Disable Confirm Button by Default
+    document.getElementById("confirmRentalBtn").disabled = true;
+
     function updateTotalPayment() {
         const pickupDateInput = document.getElementById("pickupDate");
         const returnDateInput = document.getElementById("returnDate");
+        const confirmRentalBtn = document.getElementById("confirmRentalBtn");
 
-        // ✅ Get the selected dates
-        const pickupDateValue = pickupDateInput.value;
-        const returnDateValue = returnDateInput.value;
+        const pickupDateValue = pickupDateInput.value.trim();
+        const returnDateValue = returnDateInput.value.trim();
 
+        // ✅ Disable button if no pickup date is selected
         if (!pickupDateValue) {
             daysRentedElem.innerText = "0";
             totalPaymentElem.innerText = "₱0";
-            return; // Stop if no pickup date is selected
-        }
-
-        const pickupDate = new Date(pickupDateValue);
-        const returnDate = new Date(returnDateValue);
-        const today = new Date(); // Get today's date without time
-        today.setHours(0, 0, 0, 0); // Ensure date comparison without time
-
-        // ============================
-        // ✅ Pickup Date Validation
-        // ============================
-        if (pickupDate < today) {
-            alert("❌ Error: Pickup date cannot be in the previous date.");
-            pickupDateInput.value = ""; // Clear invalid date
-            daysRentedElem.innerText = "0";
-            totalPaymentElem.innerText = "₱0";
+            confirmRentalBtn.disabled = true;
             return;
         }
 
-        // ✅ Set minimum return date dynamically after pickup date selection
-        if (pickupDateValue) {
-            returnDateInput.setAttribute("min", pickupDateValue);
+        const pickupDate = new Date(pickupDateValue);
+        const returnDate = returnDateValue ? new Date(returnDateValue) : null;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // ✅ Check if pickup date is in the past
+        if (pickupDate < today) {
+            alert("❌ Error: Pickup date cannot be the previous date.");
+            pickupDateInput.value = "";
+            pickupDateInput.focus();
+            daysRentedElem.innerText = "0";
+            totalPaymentElem.innerText = "₱0";
+            confirmRentalBtn.disabled = true;
+            return;
         }
 
-        // ============================
-        // ✅ Return Date Validation
-        // ============================
+        // ✅ Set minimum return date based on pickup date
+        returnDateInput.setAttribute("min", pickupDateValue);
+
+        // ✅ Disable button if return date is invalid or not set
         if (!returnDateValue || returnDate <= pickupDate) {
             daysRentedElem.innerText = "0";
             totalPaymentElem.innerText = "₱0";
-            return; // Stop if return date is invalid
+            confirmRentalBtn.disabled = true;
+            return;
         }
 
-        // ============================
-        // ✅ Calculate days rented and total payment
-        // ============================
+        // ✅ Calculate rental days and total payment
         const diffTime = Math.abs(returnDate - pickupDate);
-        const daysRented = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+        const daysRented = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         daysRentedElem.innerText = daysRented;
 
-        // ✅ Calculate and update the total payment
         const totalPayment = daysRented * selectedCar.ratePerDay;
         totalPaymentElem.innerText = `₱${totalPayment.toLocaleString()}`;
+
+        // ✅ Enable button only when valid dates are selected
+        confirmRentalBtn.disabled = false;
     }
 
-    // ============================
-    // ✅ Ensure Date Pickers are Correctly Configured
-    // ============================
-    document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Prevent Confirm Button Click if Disabled
+    document.getElementById("confirmRentalBtn").addEventListener("click", function (event) {
+        const confirmRentalBtn = document.getElementById("confirmRentalBtn");
         const pickupDateInput = document.getElementById("pickupDate");
         const returnDateInput = document.getElementById("returnDate");
 
-        // ✅ Set minimum date for pickup to today
-        const today = new Date().toISOString().split("T")[0];
-        pickupDateInput.setAttribute("min", today);
+        const pickupDateValue = pickupDateInput.value.trim();
+        const returnDateValue = returnDateInput.value.trim();
 
-        // ✅ Update return date min dynamically after selecting pickup date
-        pickupDateInput.addEventListener("change", function () {
-            if (pickupDateInput.value) {
-                returnDateInput.setAttribute("min", pickupDateInput.value);
-            } else {
-                returnDateInput.setAttribute("min", today);
-            }
-            updateTotalPayment(); // Auto-update payment after date change
-        });
+        // ❌ Prevent if no dates are selected
+        if (!pickupDateValue || !returnDateValue) {
+            alert("❌ Error: Please select both pickup and return dates before confirming.");
+            event.stopPropagation(); // ✅ Stop any propagation
+            event.preventDefault(); // ✅ Prevent form submission
+            return false; // ✅ Ensure nothing proceeds
+        }
 
-        // ✅ Update total payment when return date is selected
-        returnDateInput.addEventListener("change", updateTotalPayment);
+        // ❌ Prevent if button is still disabled
+        if (confirmRentalBtn.disabled) {
+            alert("❌ Error: Please fix the date selection before proceeding.");
+            event.stopPropagation();
+            event.preventDefault();
+            return false;
+        }
+
+        // ✅ Proceed only if everything is valid
+        alert(`✅ Rental confirmed for ${selectedCar.model}! 🚗`);
+        rentalModal.style.display = "none"; // ✅ Hide modal only if valid
+        return true;
     });
 
 
-    // ============================
-    // ✅ Close Rental Modal
-    // ============================
-    closeRentalModal.addEventListener("click", function () {
+
+
+    document.getElementById("closeRentalModal").addEventListener("click", function () {
         rentalModal.style.display = "none";
     });
 
@@ -198,6 +200,7 @@
             rentalModal.style.display = "none";
         }
     });
+
 
     // ============================
     // ✅ Confirm Rental Action
@@ -250,26 +253,6 @@ window.addEventListener("click", function (e) {
     }
 });
 
-
-// ============================
-// ✅ Submit Renter Details Action
-// ============================
-submitRenterBtn.addEventListener("click", function () {
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const mobileNumber = document.getElementById("mobileNumber").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const licenseNumber = document.getElementById("licenseNumber").value.trim();
-
-    if (!firstName || !lastName || !email || !mobileNumber || !address || !licenseNumber) {
-        alert("❗ Please fill in all the required fields.");
-        return;
-    }
-
-    alert(`✅ Rental confirmed for ${firstName} ${lastName}! 🚗`);
-    renterModal.style.display = "none"; // Hide Renter Modal
-});
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -423,7 +406,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// SUCCESS MODAL
+// ============================
+// ✅ SUCCESS MODAL LOGIC
+// ============================
 document.addEventListener("DOMContentLoaded", function () {
     const renterModal = document.getElementById("renterModal");
     const submitRenterBtn = document.getElementById("submitRenterBtn");
@@ -432,18 +417,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeSuccessModal = document.querySelector("#successModal .close");
     const successOkBtn = document.getElementById("successOkBtn");
 
-    // Ensure the success modal is fully hidden on page load
+    // ✅ Hide success modal on page load
     if (successModal) {
         successModal.style.display = "none";
-        successModal.style.opacity = "0"; // Prevent flash effect
+        successModal.style.opacity = "0"; // Avoid flash effect
     }
 
-    // Function to generate a random reference number
+    // ============================
+    // ✅ Generate Random Reference Number
+    // ============================
     function generateReferenceNumber() {
         return "TXN" + Math.random().toString(36).substr(2, 8).toUpperCase();
     }
 
-    // Close Modal Function
+    // ============================
+    // ✅ Close Modal Function
+    // ============================
     function closeModal(modal) {
         if (modal) {
             modal.style.display = "none";
@@ -451,17 +440,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Open Modal Function
+    // ============================
+    // ✅ Open Modal Function
+    // ============================
     function openModal(modal) {
         if (modal) {
-            modal.style.display = "flex"; // Ensure flex is applied properly
-            modal.style.opacity = "1"; // Make sure it's visible
+            modal.style.display = "flex"; // ✅ Show modal properly
+            modal.style.opacity = "1";
+        } else {
+            console.error("❌ Modal not found!");
         }
     }
 
-    // Submit Renter Details
+
+    // ============================
+    // ✅ Submit Renter Details with Validations
+    // ============================
     submitRenterBtn.addEventListener("click", function () {
-        // Get input values on button click
         const firstName = document.getElementById("firstName").value.trim();
         const lastName = document.getElementById("lastName").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -469,33 +464,69 @@ document.addEventListener("DOMContentLoaded", function () {
         const address = document.getElementById("address").value.trim();
         const licenseNumber = document.getElementById("licenseNumber").value.trim();
 
-        // Validate all fields
+        // ============================
+        // 🚨 Validation Rules
+        // ============================
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const mobilePattern = /^[0-9]{11}$/; // 11-digit mobile number
+        const licensePattern = /^[A-Z]{3}-[0-9]{4}-[A-Z]{2}$/; // e.g., ABC-1234-XY
+
+        // ============================
+        // ❌ Validate Empty Fields
+        // ============================
         if (!firstName || !lastName || !email || !mobileNumber || !address || !licenseNumber) {
             alert("❗ Please fill in all the required fields.");
-            return; // Stop execution if fields are missing
+            return;
         }
 
-        closeModal(renterModal); // Close renter modal
-        referenceNumberSpan.textContent = generateReferenceNumber(); // Generate reference number
-        openModal(successModal); // Show success modal
+        // ============================
+        // ❌ Validate Email Format
+        // ============================
+        if (!emailPattern.test(email)) {
+            alert("❌ Invalid email format. Please enter a valid email (e.g., example@email.com).");
+            return;
+        }
+
+        // ============================
+        // ❌ Validate Mobile Number Format
+        // ============================
+        if (!mobilePattern.test(mobileNumber)) {
+            alert("❌ Invalid mobile number. Please enter an 11-digit valid mobile number.");
+            return;
+        }
+
+        // ============================
+        // ❌ Validate License Number Format
+        // ============================
+        if (!licensePattern.test(licenseNumber)) {
+            alert("❌ Invalid license number. Format should be ABC-1234-XY.");
+            return;
+        }
+
+        // ✅ All Validations Passed
+        closeModal(renterModal); // Close Renter Modal
+        referenceNumberSpan.textContent = generateReferenceNumber(); // Generate Reference
+        openModal(successModal); // Open Success Modal
     });
 
-    // Close Success Modal on X Button Click
+    // ============================
+    // ✅ Close Success Modal on X Button Click
+    // ============================
     closeSuccessModal.addEventListener("click", function () {
         closeModal(successModal);
     });
 
-    // Close Success Modal on OK Button Click
+    // ✅ Close Success Modal on OK Button Click
     successOkBtn.addEventListener("click", function () {
         closeModal(successModal);
     });
 
-    // Close modal when clicking outside content
+    // ✅ Close Modal When Clicking Outside Modal
     window.addEventListener("click", function (event) {
-        if (event.target === successModal) closeModal(successModal);
+        if (event.target === successModal) {
+            closeModal(successModal);
+        }
     });
 });
-
-
 
 

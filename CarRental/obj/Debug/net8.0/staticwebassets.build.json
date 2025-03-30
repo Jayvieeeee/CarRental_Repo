@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OWeDVAWqjozsUbiMs6SiMHZxI2Tmn2wnpZlHM93vH5w=",
+  "Hash": "5AnPnRYwrADmpUG1JvYHvpH0MAOhQa+k8bt5geaQQ9A=",
   "Source": "CarRental",
   "BasePath": "_content/CarRental",
   "Mode": "Default",
@@ -1228,8 +1228,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "m4kyb2gv96",
-      "Integrity": "mnIM4VZAfUmGCgHZe36qr+SiRKzKSE1jUYaxcjIBJYU=",
+      "Fingerprint": "22w1dypwfr",
+      "Integrity": "diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\rent.js"
@@ -7192,6 +7192,51 @@
       ]
     },
     {
+      "Route": "js/customer/rent.22w1dypwfr.js",
+      "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20232"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 30 Mar 2025 10:01:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "22w1dypwfr"
+        },
+        {
+          "Name": "label",
+          "Value": "js/customer/rent.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY="
+        }
+      ]
+    },
+    {
       "Route": "js/customer/rent.js",
       "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
       "Selectors": [],
@@ -7202,7 +7247,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "19294"
+          "Value": "20232"
         },
         {
           "Name": "Content-Type",
@@ -7210,11 +7255,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"mnIM4VZAfUmGCgHZe36qr+SiRKzKSE1jUYaxcjIBJYU=\""
+          "Value": "\"diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 29 Mar 2025 18:58:57 GMT"
+          "Value": "Sun, 30 Mar 2025 10:01:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7224,52 +7269,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-mnIM4VZAfUmGCgHZe36qr+SiRKzKSE1jUYaxcjIBJYU="
-        }
-      ]
-    },
-    {
-      "Route": "js/customer/rent.m4kyb2gv96.js",
-      "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "19294"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"mnIM4VZAfUmGCgHZe36qr+SiRKzKSE1jUYaxcjIBJYU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 29 Mar 2025 18:58:57 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "m4kyb2gv96"
-        },
-        {
-          "Name": "label",
-          "Value": "js/customer/rent.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-mnIM4VZAfUmGCgHZe36qr+SiRKzKSE1jUYaxcjIBJYU="
+          "Value": "sha256-diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY="
         }
       ]
     },
