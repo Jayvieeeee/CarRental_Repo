@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5AnPnRYwrADmpUG1JvYHvpH0MAOhQa+k8bt5geaQQ9A=",
+  "Hash": "qmbCDOFpgA42SLzq9BEbbJmOz8Qmfv+5KsJohOCMrxo=",
   "Source": "CarRental",
   "BasePath": "_content/CarRental",
   "Mode": "Default",
@@ -220,8 +220,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "hgb01dbj42",
-      "Integrity": "/2AbbZhl2xD1wB/BtxDPF1BJJb9/+1AmGCi6IHSQGkU=",
+      "Fingerprint": "3qx2l0g1nn",
+      "Integrity": "xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\customer\\rent.css"
@@ -1228,8 +1228,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "22w1dypwfr",
-      "Integrity": "diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=",
+      "Fingerprint": "wnlnxs7g8z",
+      "Integrity": "bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customer\\rent.js"
@@ -3256,6 +3256,51 @@
       ]
     },
     {
+      "Route": "css/customer/rent.3qx2l0g1nn.css",
+      "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\css\\customer\\rent.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16302"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 30 Mar 2025 12:09:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3qx2l0g1nn"
+        },
+        {
+          "Name": "label",
+          "Value": "css/customer/rent.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U="
+        }
+      ]
+    },
+    {
       "Route": "css/customer/rent.css",
       "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\css\\customer\\rent.css",
       "Selectors": [],
@@ -3266,7 +3311,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "16189"
+          "Value": "16302"
         },
         {
           "Name": "Content-Type",
@@ -3274,11 +3319,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/2AbbZhl2xD1wB/BtxDPF1BJJb9/+1AmGCi6IHSQGkU=\""
+          "Value": "\"xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 29 Mar 2025 18:14:34 GMT"
+          "Value": "Sun, 30 Mar 2025 12:09:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3288,52 +3333,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/2AbbZhl2xD1wB/BtxDPF1BJJb9/+1AmGCi6IHSQGkU="
-        }
-      ]
-    },
-    {
-      "Route": "css/customer/rent.hgb01dbj42.css",
-      "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\css\\customer\\rent.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "16189"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"/2AbbZhl2xD1wB/BtxDPF1BJJb9/+1AmGCi6IHSQGkU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 29 Mar 2025 18:14:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "hgb01dbj42"
-        },
-        {
-          "Name": "label",
-          "Value": "css/customer/rent.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-/2AbbZhl2xD1wB/BtxDPF1BJJb9/+1AmGCi6IHSQGkU="
+          "Value": "sha256-xXOhXqylBc+I5ePw0SvsMKJuGKYsKIbn7yd92sTpC1U="
         }
       ]
     },
@@ -7192,51 +7192,6 @@
       ]
     },
     {
-      "Route": "js/customer/rent.22w1dypwfr.js",
-      "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "20232"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 10:01:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "22w1dypwfr"
-        },
-        {
-          "Name": "label",
-          "Value": "js/customer/rent.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY="
-        }
-      ]
-    },
-    {
       "Route": "js/customer/rent.js",
       "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
       "Selectors": [],
@@ -7247,7 +7202,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "20232"
+          "Value": "17535"
         },
         {
           "Name": "Content-Type",
@@ -7255,11 +7210,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY=\""
+          "Value": "\"bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 10:01:43 GMT"
+          "Value": "Sun, 30 Mar 2025 12:15:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7269,7 +7224,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-diK8ihFe8VDc9t0RwjpjaeBf7Xb5PFl4vXSza8DcNxY="
+          "Value": "sha256-bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8="
+        }
+      ]
+    },
+    {
+      "Route": "js/customer/rent.wnlnxs7g8z.js",
+      "AssetFile": "C:\\Users\\Jayvie\\Desktop\\CarRental_Repo\\CarRental\\wwwroot\\js\\customer\\rent.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17535"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 30 Mar 2025 12:15:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wnlnxs7g8z"
+        },
+        {
+          "Name": "label",
+          "Value": "js/customer/rent.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bO7Z0N1vTfkoDSlqLaRMSVe9mGhZg9+KhRtA+i2VMW8="
         }
       ]
     },
