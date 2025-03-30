@@ -14,5 +14,7 @@
         public string ContactNo { get; set; }
         public string LicenseNo { get; set; }
         public string Address { get; set; }
+
+        public string ReferenceNumber { get; set; }
     }
 }

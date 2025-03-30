@@ -359,7 +359,7 @@
             this.openModal(this.renterModal);
         }
 
-        handleSubmitRenter(e) {
+         handleSubmitRenter(e) {
             e.preventDefault();
             console.log("Submit button clicked - starting validation");
 
@@ -367,8 +367,6 @@
                 console.log("Form validation failed");
                 return;
             }
-
-            console.log("Form validation passed - proceeding to show success modal");
 
             this.closeModal(this.renterModal);
 
@@ -395,7 +393,7 @@
 
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             const mobilePattern = /^[0-9]{11}$/;
-            const licensePattern = /^[A-Za-z]\d{2}-\d{3}-\d{5}$/;
+            const licensePattern = /^[A-Z]\d{2}-\d{2}-\d{6}$/; 
 
             for (const [field, value] of Object.entries(formData)) {
                 if (!value) {
@@ -415,7 +413,7 @@
             }
 
             if (!licensePattern.test(formData.licenseNumber)) {
-                this.showError("License number format should be ABC-1234-56789 (as shown in the placeholder).");
+                this.showError("License number format should be A12-123-456789 (as shown in the placeholder).");
                 return false;
             }
 
@@ -487,9 +485,6 @@
         }
 
         resetRenterModalState() {
-            this.firstNameInput.value = "";
-            this.lastNameInput.value = "";
-            this.emailInput.value = "";
             this.mobileNumberInput.value = "";
             this.addressInput.value = "";
             this.licenseNumberInput.value = "";

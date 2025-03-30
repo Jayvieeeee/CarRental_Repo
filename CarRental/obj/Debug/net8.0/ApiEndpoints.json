@@ -1,1 +1,55 @@
-[]
+[
+  {
+    "ContainingType": "CarRental.Controllers.Shared.MessageController",
+    "Method": "GetConversation",
+    "RelativePath": "shared/messages/conversation/{userId}/{otherUserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "otherUserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRental.Controllers.Shared.MessageController",
+    "Method": "ReplyToMessage",
+    "RelativePath": "shared/messages/reply",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reply",
+        "Type": "CarRental.Models.Entites.Message",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRental.Controllers.Shared.MessageController",
+    "Method": "SendMessage",
+    "RelativePath": "shared/messages/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "message",
+        "Type": "CarRental.Models.Entites.Message",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

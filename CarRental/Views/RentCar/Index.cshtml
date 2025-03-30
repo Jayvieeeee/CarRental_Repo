@@ -161,46 +161,53 @@
 
 <!-- RENTER DETAILS MODAL -->
 <div id="renterModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Renter Details</h2>
-            <hr class="modal-divider">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Renter Details</h2>
+        <hr class="modal-divider">
 
-            <div class="form-container">
+        <div class="form-container">
+            <!-- First Name -->
                 <div class="form-group">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" placeholder="Juan">
+                    <input type="text" id="firstName" name="firstName" value="@ViewBag.FirstName" maxlength="50" required>
+                    <p>First Name: @ViewBag.FirstName</p>
                 </div>
 
                 <div class="form-group">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" placeholder="Dela Cruz">
+                    <input type="text" id="lastName" name="lastName" value="@ViewBag.LastName" maxlength="50" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="juandelacruz@gmail.com">
+                    <input type="email" id="email" name="email" value="@ViewBag.Email" maxlength="50" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="mobileNumber">Mobile Number:</label>
-                    <input type="text" id="mobileNumber" placeholder="0912 345 6789">
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" placeholder="123 Rizal Avenue, Barangay 78, C">
-                </div>
-
-                <div class="form-group">
-                    <label for="licenseNumber">License Number:</label>
-                    <input type="text" id="licenseNumber" placeholder="A12-345-67890">
-                </div>
+            <!-- Mobile Number -->
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number:</label>
+                <input type="text" id="mobileNumber" name="mobileNumber" placeholder="0912 345 6789" maxlength="11">
             </div>
 
-            <button id="submitRenterBtn" class="rent-btn">Submit</button>
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="123 Rizal Avenue, Barangay 78, C" maxlength="100">
+            </div>
+
+            <!-- License Number -->
+            <div class="form-group">
+                <label for="licenseNumber">License Number:</label>
+                <input type="text" id="licenseNumber" name="licenseNumber" placeholder="A12-345-67890" maxlength="15">
+            </div>
         </div>
+
+        <!-- Submit Button -->
+        <button id="submitRenterBtn" class="rent-btn">Submit</button>
     </div>
+</div>
+
 
 <!-- SUCCESS CONFIRMATION MODAL -->
 <div id="successModal" class="modal">
@@ -218,6 +225,7 @@
             <button id="successOkBtn" class="rent-btn">OK</button>
         </div>
     </div>
+
 
 
 <script src="~/js/customer/rent.js"></script>

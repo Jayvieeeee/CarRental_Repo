@@ -8,6 +8,7 @@ using CarRental.Views.CarList.Data;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using CarRental.Models.Entites;
 
 namespace CarRental.Controllers.Customer
 {
@@ -41,12 +42,15 @@ namespace CarRental.Controllers.Customer
                 RentalDate = model.RentalDate,
                 ReturnDate = model.ReturnDate,
                 EstimatedPrice = model.EstimatedPrice,
-                Status = "Pending", // Default status
+                Status = "Pending",
                 UserId = userId.Value,
                 ContactNo = model.ContactNo,
                 LicenseNo = model.LicenseNo,
-                Address = model.Address
+                Address = model.Address,
+                ReferenceNumber = model.ReferenceNumber,
+                CreatedAt = DateTime.UtcNow
             };
+
 
             // Save request to the database
             try
@@ -95,39 +99,37 @@ namespace CarRental.Controllers.Customer
         }
 
 
-
-
         [HttpGet]
         public IActionResult Index()
         {
-
             var userId = GetCurrentUserId();
             if (userId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            ViewBag.UserId = userId; 
+            Console.WriteLine($"✅ User ID found: {userId}");
 
             var user = _context.UserAccounts.FirstOrDefault(u => u.UserId == userId);
 
-            if (user != null)
+            if (user == null)
             {
-                ViewBag.FirstName = user.FirstName;
-                ViewBag.LastName = user.LastName;
-                ViewBag.Email = user.Email;
+                Console.WriteLine("❌ User not found in database!");
             }
             else
             {
-                ViewBag.FirstName = "";
-                ViewBag.LastName = "";
-                ViewBag.Email = "";
+                Console.WriteLine($"👤 User found: {user.FirstName} {user.LastName}");
             }
+
+            ViewBag.UserId = userId;
+            ViewBag.FirstName = user?.FirstName ?? "";
+            ViewBag.LastName = user?.LastName ?? "";
+            ViewBag.Email = user?.Email ?? "";
 
             var cars = _context.Cars.ToList();
             return View(cars);
-
         }
+
 
 
         [HttpPost("Cancel/{id}")]
