@@ -10,7 +10,7 @@ using CarRental.Models.Entites;
 
 namespace CarRental.Controllers.Admin
 {
-    [Route("api/admin/notification")]
+    [Route("admin/notification")]
     public class NotificationController : Controller
     {
         private readonly IHubContext<NotificationHub> _hubContext;

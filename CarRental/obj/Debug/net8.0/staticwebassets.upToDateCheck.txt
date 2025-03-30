@@ -59,6 +59,7 @@ wwwroot\js\customer\rent.js
 wwwroot\js\guest\logout.js
 wwwroot\js\guest\verifycode.js
 wwwroot\js\inquiries.js
+wwwroot\js\message.js
 wwwroot\js\script.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

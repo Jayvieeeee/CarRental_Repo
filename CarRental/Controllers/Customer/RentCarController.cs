@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace CarRental.Controllers.Customer
 {
-    [Route("api/customer/rentcar")]
+    [Route("customer/rentcar")]
     public class RentCarController : Controller
     {
         private readonly AppDbContext _context;
