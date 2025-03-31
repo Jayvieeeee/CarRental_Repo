@@ -375,7 +375,8 @@
             this.referenceNumberSpan.textContent = refNumber;
 
             console.log("Attempting to open success modal");
-            this.openModal(this.successModal);
+             this.openModal(this.successModal);
+             this.sendRentalRequest();
         }
 
         // VALIDATION OF RENTER DETAILS
@@ -488,6 +489,49 @@
             this.mobileNumberInput.value = "";
             this.addressInput.value = "";
             this.licenseNumberInput.value = "";
+        }
+
+
+        sendRentalRequest() {
+            // Collect necessary form data
+            console.log("im working here..");
+
+            let userId = localStorage.getItem("userId");
+            let rentalRequest = {
+                CarId: this.selectedCar.id,
+                RentalDate: document.getElementById("pickupDate").value,
+                ReturnDate: document.getElementById("returnDate").value,
+                EstimatedPrice: parseFloat(document.getElementById("totalPayment").innerText.replace(/[^\d.]/g, "")),
+                Status: "Pending",
+                userId: parseInt(userId),
+                ContactNo: document.getElementById("mobileNumber").value,
+                LicenseNo: document.getElementById("licenseNumber").value,
+                Address: document.getElementById("address").value,
+                ReferenceNumber: document.getElementById("referenceNumber").innerText,
+                CreatedAt: new Date().toISOString() // Current timestamp in UTC
+            };
+
+            // Send data to the controller
+            fetch("/api/customer/rentcar/requestrental", { // Replace with your actual API URL
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(rentalRequest)
+            })
+                .then(response => response.json()) // Assuming response is JSON
+                .then(data => {
+                    console.log("Server Response:", data);
+                    if (data.success) {
+                        alert("Rental request submitted successfully!");
+                    } else {
+                        alert("Error: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error sending rental request:", error);
+                    alert("Failed to submit rental request.");
+                });
         }
     }
 
